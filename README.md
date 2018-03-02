@@ -1,10 +1,10 @@
-##
-##                       dotfiles do @usuariolinux
-##                    ------------------------------- 
-##                      Copie, altere, arrume e use
-##              -------------------------------------------
-##                 https://github.com/filipegmedeiros
-##          ---------------------------------------------------
+
+                       dotfiles do @usuariolinux
+                    ------------------------------- 
+                      Copie, altere, arrume e use
+              -------------------------------------------
+                 https://github.com/filipegmedeiros
+          ---------------------------------------------------
 
 
 ## Índice
