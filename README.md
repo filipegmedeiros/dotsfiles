@@ -1,10 +1,10 @@
 
-                       dotfiles do @usuariolinux
-                    ------------------------------- 
-                      Copie, altere, arrume e use
-              -------------------------------------------
-                 https://github.com/filipegmedeiros
-          ---------------------------------------------------
+#                       dotfiles do @usuariolinux
+#                    ------------------------------- 
+#                      Copie, altere, arrume e use
+#              -------------------------------------------
+#                 https://github.com/filipegmedeiros
+#          ---------------------------------------------------
 
 
 ## Índice
@@ -14,8 +14,8 @@
 * [vim](https://github.com/filipegmedeiros/dotfiles/tree/master/.config/vim)
 * [zsh](https://github.com/filipegmedeiros/dotfiles/tree/master/.config/zsh)
 
-## Exemplos de como usar os dotfiles(não faça isso como root)
-    
+## Como usar meus dotfiles? Segue um exemplo
+
 Usando o git:
   ~~~ sh
 	mkdir ~/github && cd ~/github # crie a pasta gihub(ou qualquer outro nome)
