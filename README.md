@@ -9,10 +9,11 @@
 
 ## Índice
 
-* [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar)
-* [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)
-* [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim)
-* [zsh](https://github.com/filipegmedeiros/dotsfiles/tree/master/zsh)
+* [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar) # Ainda em Construção
+* [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi) 
+* [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim) # Ainda em Construção
+* [zsh](https://github.com/filipegmedeiros/dotsfiles/tree/master/zsh) 
+* [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3) # Planejamento futuro
 
 ## Como usar meus dotfiles? Segue um exemplo
 
