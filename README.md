@@ -1,6 +1,6 @@
 
-#######                       Dotfiles do @usuariolinux                   
-#######                       Copie, altere, arrume e use
+######                       Dotfiles do @usuariolinux                   
+######                       Copie, altere, arrume e use
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -18,8 +18,7 @@
 
 Usando o git:
   ~~~ sh
-	mkdir ~/github && cd ~/github # crie a pasta gihub(ou qualquer outro nome)
     git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
-    cd dotfiles/
+    cd dotfiles/ # entre no diretório
     ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
   ~~~
