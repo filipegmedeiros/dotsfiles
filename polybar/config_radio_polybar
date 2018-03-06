@@ -25,7 +25,7 @@ font-0 = NotoSans-Regular:size=8;0
 
 modules-left = menu1 menu2
 modules-center = my-text-label
-modules-right = volume
+modules-right = volume reboot
 
 
 
@@ -105,5 +105,20 @@ menu-0-0-exec = firefox
 [module/my-text-label]
 type = custom/text
 content = criador @filipemedeiros86 - filipemedeiros@tuta.io
+
+
+[module/reboot]
+type = custom/script
+format = <label>
+label = "Reiniciar PC"
+label-padding = 2
+label-background = #DC4040
+label-foreground = #ffe3ff
+label-underline = #B21C1C
+label-overline = #B21C1C
+exec = ""
+click-left = reboot -h
+interval = 90
+
 
 
