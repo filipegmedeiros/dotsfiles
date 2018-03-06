@@ -1,0 +1,109 @@
+[settings]
+throttle-ms = 50
+throttle-limit = 5
+
+[bar/top]
+monitor = HDMI-2
+width = 100%
+height = 27
+offset-y = 0
+
+background = #131E2F
+foreground = #f2f2f2
+
+overline-size = 2
+overline-color = #bc92f8
+underline-size = 2
+
+
+spacing = 1
+padding-right = 2
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = NotoSans-Regular:size=8;0
+
+modules-left = menu1 menu2
+modules-center = my-text-label
+modules-right = volume
+
+
+
+[module/volume]
+type = internal/volume
+;format-volume = <ramp-volume> <label-volume>
+format-volume = <label-volume>
+format-volume-prefix = "Volume "
+format-volume-prefix-foreground =  #ffe3ff
+format-volume-prefix-background = #5F95E6
+format-volume-prefix-underline = #003C95
+format-volume-prefix-overline = #003C95
+format-volume-prefix-padding = 1
+
+
+label-volume = %percentage%%
+label-volume-padding = 1
+label-volume-background = #5F95E6
+label-volume-foreground = #ffe3ff
+label-volume-underline = #003C95
+label-volume-overline = #003C95
+
+label-muted = "SEM SOM"
+label-muted-padding = 1
+label-muted-background = #DC4040
+label-muted-foreground = #ffe3ff
+label-muted-underline = #B21C1C
+label-muted-overline = #B21C1C
+format-volume-muted = <label-muted>
+
+
+
+[module/menu1]
+type = custom/script
+format = <label>
+label = "Iniciar IceCast"
+label-padding = 2
+label-background = #5F95E6
+label-foreground = #ffe3ff
+label-underline = #003C95
+label-overline = #003C95
+exec = ""
+click-left = icecast2
+interval = 90
+
+
+[module/menu2]
+type = custom/menu
+format-spacing = 1
+expand-right = true
+
+label-open = "Fechar iceCast"
+
+label-open-padding = 2
+label-open-background = #DC4040
+label-open-foreground = #ffe3ff
+label-open-underline = #B21C1C
+label-open-overline = #B21C1C
+
+label-close = "Não desejo desligar a rádio"
+label-close-background = #FFFFFF
+label-close-padding = 2
+label-close-foreground = #FF0000
+label-close-underline = #B21C1C
+label-close-overline = #B21C1C
+;label-separator = " "
+label-separator =" "
+
+menu-0-0 = "REALMENTE DESLIGAR A RÁDIO ONLINE!"
+menu-0-0-foreground = #000000
+menu-0-0-background = #FF0000
+menu-0-0-underline = #B21C1C
+menu-0-0-overline = #B21C1C
+menu-0-0-padding = 2
+menu-0-0-exec = firefox
+
+[module/my-text-label]
+type = custom/text
+content = criador @filipemedeiros86 - filipemedeiros@tuta.io
+
+
