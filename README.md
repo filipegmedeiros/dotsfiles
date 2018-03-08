@@ -9,11 +9,12 @@
 
 ## Índice
 
-* [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar) - Ainda em Construção 
+* [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar) 
 * [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi) 
-* [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim) - Ainda em Construção 
+* [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim) 
 * [zsh](https://github.com/filipegmedeiros/dotsfiles/tree/master/zsh) 
-* [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3) - Planejamento futuro 
+* [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3) 
+* [fontes](https://github.com/filipegmedeiros/dotsfiles/tree/master/fontes) 
 
 ## Como usar meus dotfiles? Segue um exemplo
 
@@ -23,3 +24,10 @@ Usando o git:
     cd dotfiles/ # entre no diretório
     ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
   ~~~
+  Como instalar as fontes:
+    ~~~ sh
+    git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
+    cd dotfiles/fontes # entre no diretório
+    ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
+  ~~~
+  
