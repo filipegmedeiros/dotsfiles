@@ -25,9 +25,9 @@ Usando o git:
     ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
   ~~~
   Como instalar as fontes:
-    ~~~ sh
+  ~~~ sh
     git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
     cd dotfiles/fontes # entre no diretório
-    ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
+    mv *.ttf  ${HOME}/.local/share/fonts/ # Move as fontes para fc-cache -v -f
   ~~~
   
