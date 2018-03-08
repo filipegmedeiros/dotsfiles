@@ -19,7 +19,7 @@ screenchange-reload = true
 ;		        B A R / T O P
 ;----------------------------------------------------------
 [bar/top]
-monitor = ${env:MONITOR:HDMI-2}
+monitor = ${env:MONITOR:LVDS-1}
 width = 100%
 height = 30
 offset-y = -1
@@ -42,7 +42,7 @@ font-1 = Wuncon Siji:pixelsize=13;2
 
 modules-left = launch
 modules-center = window
-modules-right = clock calendar volume memory wifi network powermenu
+modules-right = clock calendar volume memory wifi network battery powermenu
 
 ;----------------------------------------------------------
 ;		        W I N D O W
@@ -161,19 +161,19 @@ label-separator = " "
 
 label-open-foreground = ${colors.destaque}
 
-menu-0-0 = Browser
+menu-0-0 = 
 menu-0-0-exec = $BROWSER &
 
 menu-0-1 = Thunar
 menu-0-1-exec = thunar &
 
-menu-0-2 = Terminal
+menu-0-2 = 
 menu-0-2-exec = cd ; $TERMINAL &
 
-menu-0-3 = Subl
-menu-0-3-exec = subl &
+menu-0-3 = 
+menu-0-3-exec = nvim &
 
-menu-0-4 = Telegram
+menu-0-4 = 
 menu-0-4-exec = telegram &
 
 menu-0-5 = whats
@@ -231,26 +231,54 @@ click-left = lxtask &
 ;----------------------------------------------------------
 [module/network]
 type = internal/network
-interface = eno1
+interface = wlp2s0
 interval = 3.0
 
 format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 
 ;label-connected = "%signal%% %{F#F1F1F1} %{F-}%downspeed% %{F#F1F1F1} %{F-}%upspeed%"
-label-connected = %downspeed%
+label-connected =  %essid%
 label-connected-foreground = ${colors.foreground}
 
-label-disconnected = desconectado
+label-disconnected = Desconectado
 ;label-disconnected = 
-;label-disconnected-foreground = #66ffffff
+label-disconnected-background = ${colors.destaque}
+label-disconnected-foreground = #FFFFFF
+
 
 
 [module/wifi]
 type = custom/script
 interval = 60.0
 exec =  ""
-label = 
-click-left = ~/.config/polybar/scripts/rofi-wifi-menu/rofi-wifi-menu.sh
+label =  Wifi
+click-left = ~/.config/polybar/scripts/wifi-menu.sh	
 format = <label>
 label-foreground = ${colors.destaque}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+poll-interval = 5
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging> 
+time-format = %H:%M
+
+label-charging = %percentage%%
+label-discharging = %percentage%% %{F#587A89} descarrega em %{F-} %time%h
+
+ramp-capacity-foreground = ${colors.destaque}
+ramp-capacity-0 = 
+ramp-capacity-1 =
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-foreground = ${colors.destaque}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-framerate = 750
