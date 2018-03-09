@@ -295,4 +295,3 @@ exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id compton &
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id zsh -c 'xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1'
-
