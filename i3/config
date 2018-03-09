@@ -19,7 +19,7 @@ font pango:Source Code Pro 10
 #############################################################
 ############### C O L O R S #################################
 #############################################################
-set_from_resource $fg i3wm.foreground #587A89
+set_from_resource $fg i3wm.foreground #D8DEE9
 set_from_resource $bg i3wm.background #587A89
 
 set $default_gaps_inner 8
@@ -295,3 +295,4 @@ exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id compton &
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id zsh -c 'xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1'
+
