@@ -38,5 +38,4 @@ Usando o git:
 ## ScreenShots
 
 ![Screenshot #1][screenshot1]  
-https://github.com/filipegmedeiros/dotsfiles/blob/master/screenshot.png?raw=true
-[screenshot1]: https://github.com/filipegmedeiros/dotsfiles/blob/master/screenshot.png "Screenshot #1"
+[screenshot1]: https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/screenshot.png "Screenshot #1"
