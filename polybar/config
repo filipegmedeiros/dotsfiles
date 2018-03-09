@@ -44,7 +44,7 @@ font-2 = Wuncon Siji:pixelsize=11;2
 
 modules-left = launch i3
 modules-center =  window
-modules-right = clock calendar volume backlight memory network battery powermenu
+modules-right = clock calendar volume backlight battery memory wifi powermenu
 
 ;----------------------------------------------------------
 ;		        W I N D O W
@@ -75,6 +75,10 @@ format = <label>
 format-prefix = "  "
 format-prefix-foreground = ${colors.destaque}
 
+;----------------------------------------------------------
+;			 C L O C K
+;----------------------------------------------------------
+
 [module/clock]
 type = custom/script
 interval = 1
@@ -84,6 +88,36 @@ label = %output%
 format = <label>
 format-prefix = "  "
 format-prefix-foreground = ${colors.destaque}
+
+;----------------------------------------------------------
+;			 B A T T E R Y
+;----------------------------------------------------------
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+poll-interval = 5
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging> 
+time-format = %H:%M
+
+label-charging = %percentage%%
+label-discharging = %percentage%% %{F#587A89} left %{F-} %time%h
+
+ramp-capacity-foreground = ${colors.destaque}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-foreground = ${colors.destaque}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-framerate = 750
 
 ;----------------------------------------------------------
 ;		        V O L U M E
@@ -162,18 +196,6 @@ click-left = ~/.config/rofi/scripts/drun &
 click-middle = ~/.config/rofi/scripts/run &
 click-right = ~/.config/rofi/scripts/drun &
 
-;----------------------------------------------------------
-;		        C P U
-;----------------------------------------------------------
-[module/cpu]
-type = custom/script
-interval = 1
-format = <label>
-label = %output:%%
-format-prefix = "CPU "
-format-prefix-foreground = ${colors.destaque}
-exec = ~/.config/polybar/scripts/cpu.sh
-click-left = lxtask &
 
 ;----------------------------------------------------------
 ;		        M E M O R Y
@@ -191,61 +213,16 @@ click-left = lxtask &
 ;----------------------------------------------------------
 ;		        N E T W O R K
 ;----------------------------------------------------------
-[module/network]
-type = internal/network
-interface =wlp2s0
-interval = 3.0
-
-format-connected =  <label-connected> 
-format-connected-prefix = " "
-format-connected-prefix-foreground = #587A89
-format-disconnected = <label-disconnected>
-
-;label-connected = "%signal%% %{F#F1F1F1} %{F-}%downspeed% %{F#F1F1F1} %{F-}%upspeed%"
-label-connected =  %local_ip%
-label-connected-foreground = ${colors.foreground}
-
-label-disconnected =  Desconectado
-;label-disconnected = 
-label-disconnected-background = ${colors.destaque}
-label-disconnected-foreground = #FFFFFF
-
-
-
 [module/wifi]
 type = custom/script
-interval = 60.0
-exec =  ""
-label =  Wifi
-click-left = ~/.config/polybar/scripts/wifi-menu.sh	
+interval = 1
+exec =  ~/.config/polybar/scripts/echo.sh 1
+click-left = ~/.config/polybar/scripts/wifi-menu.sh
+label = %output%
 format = <label>
-label-foreground = ${colors.destaque}
+format-prefix = " "
+format-prefix-foreground = ${colors.destaque}
 
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC0
-poll-interval = 5
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity>  <label-discharging> 
-time-format = %H:%M
-
-label-charging = %percentage%%
-label-discharging = %percentage%% %{F#587A89} descarrega em %{F-} %time%h
-
-ramp-capacity-foreground = ${colors.destaque}
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-animation-charging-foreground = ${colors.destaque}
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-framerate = 750
 
 
 ;----------------------------------------------------------
@@ -301,20 +278,15 @@ label-visible-padding = 4
 ;----------------------------------------------------------
 
 [module/backlight]
-type = internal/xbacklight
-format = <label> <bar>
+type = custom/script
+interval = 1
+exec = ~/.config/polybar/scripts/backlight.sh
 
-label = 
-label-background = ${colors.destaque}
-label-foreground = #587A89
+scroll-up = exec light -A 5
+scroll-down = exec light -U 5
 
-bar-width = 10
-bar-indicator = |
-bar-indicator-font = 3
-bar-indicator-foreground = #ff
-bar-fill = ─
-bar-fill-font = 3
-bar-fill-foreground = #c9665e
-bar-empty = ─
-bar-empty-font = 3
-bar-empty-foreground = #44
+format-prefix = " "
+format-prefix-foreground = ${colors.destaque}
+
+label = %output%%
+format-padding = 
