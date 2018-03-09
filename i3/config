@@ -7,7 +7,7 @@ set $mod Mod4
 #hide_edge_borders both
 force_display_urgency_hint 0
 #workspace_auto_back_and_forth yes
-new_window pixel 3
+new_window pixel 5
 
 # smart|urgent|focus|none
 #focus_on_window_activation focus
@@ -19,8 +19,15 @@ font pango:Source Code Pro 10
 #############################################################
 ############### C O L O R S #################################
 #############################################################
-set_from_resource $fg i3wm.foreground #D8DEE9
-set_from_resource $bg i3wm.background #2E3440
+set_from_resource $fg i3wm.foreground #587A89
+set_from_resource $bg i3wm.background #587A89
+
+set $default_gaps_inner 8
+set $default_gaps_outer 0
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bg     $bg     $fg  $bg       $bg
@@ -43,7 +50,6 @@ bindsym $mod+q kill
 # Rofi
 bindsym $mod+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/dark.rasi -dmenu -p "Google: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} $BROWSER https://www.google.com.br/search?q={}
 #bindsym $mod+Shift+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/dark.rasi -dmenu -p "DuckDuckGo: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} $BROWSER https://duckduckgo.com/?q={}
-bindsym --release Mod1+g exec --no-startup-id exec ~/.config/rofi/scripts/git
 
 bindsym $mod+Shift+w exec --no-startup-id ~/.config/rofi/scripts/janelas
 bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/drun
@@ -113,20 +119,16 @@ bindsym $mod+Shift+d focus child
 ############### W O R K S P A C E S #########################
 #############################################################
 set $workspace1 "1:"
-set $workspace2 "2:"
-set $workspace3 "3:"
-set $workspace4 "4:"
-set $workspace5 "5:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
 set $workspace6 "6:"
 set $workspace7 "7:"
-set $workspace8 "8:"
-set $workspace9 "9:"
+set $workspace8 "8:"
+set $workspace9 "9:"
 set $workspace10 "10:"
 
-set $default_gaps_inner 10
-set $default_gaps_outer 0
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
 
 #workspace $workspace1 gaps inner 0
 #workspace $workspace1 gaps outer 0
@@ -190,22 +192,17 @@ for_window [window_type="menu"] floating enable, move position center
 for_window [class="(Mate-font-viewer|mpv|Catfish|Engrampa|File-roller|Notes|Agave|Viewnior|Pavucontrol|Galculator|YAD)"] floating enable, move position center
 for_window [class="Lxtask" title="Gerenciador de tarefas"] floating enable, resize set 800 px 600 px, move position center
 for_window [class="^VirtualBox" title="*Executando*"] floating enable
-for_window [title="^Governo do Estado de Mato Grosso do Sul|^Mail do iCloud - Enc|Filtros de mensagens|^etcher-electron|^Skype"] floating enable
-for_window [title="(.*Reiniciar dispositivo.*|Preferências do Thunderbird)"] floating enable
 for_window [title="(Biblioteca|Library|About|Amigos|Steam|Sobre o Mozilla Firefox|VideoCut|dagor2)"] floating enable, move position center
-for_window [title="(War Thunder|War Thunder (Configurações))"] move to workspace $workspace10, floating enable, move position center, border pixel 1
-for_window [title="Lista de amigos"] floating enable, move absolute position 1667 px 0 px, resize set 250 px 400 px
 for_window [title="(screencast$|^DownThemAll|DownThemAll!$)"] move window to scratchpad
 
 assign [class="^(qutebrowser|Epiphany|Chromium|Firefox|firefox-developer)"] $workspace1
-assign [class="(Termite|Tilix|konsole|xfce4-terminal|sakura)"] $workspace2
-assign [class="(^Code*|Pluma|Sublime_text|Atom|nvim|vim|Geany)"] $workspace3
-assign [class="^(Thunar|Pcmanfm|Dolphin)"] $workspace4
-assign [class="(Lxappearance|^Pamac*|Notes|Lxtask|^Mate-disk-usage-analyzer)"] $workspace5
-assign [class="(^Steam)"] $workspace6
+assign [class="(^Code*|Pluma|Sublime_text|Atom|nvim|vim|Geany)"] $workspace2
+assign [class="(^Telegram|Whatsie|Whatsapp|whatsapp-desktop)"] $workspace3
+assign [class="(Termite|Tilix|konsole|xfce4-terminal|sakura)"] $workspace4
+assign [class="^(Thunar|Pcmanfm|Dolphin)"] $workspace5
+assign [class="(^vlc|stremio-bin)"] $workspace6
 assign [class="(Gtkman|MedleyText)"] $workspace7
-assign [class="(Whatsie|Whatsapp|whatsapp-desktop)"] $workspace8
-assign [class="(^Telegram|^Hexchat)"] $workspace9
+assign [class="(Lxappearance|^Pamac*|Notes|Lxtask|^Mate-disk-usage-analyzer)"] $workspace8
 assign [class="(dontstarve_steam)"] $workspace10
 #assign [title="War Thunder"] $workspace10
 
@@ -295,6 +292,6 @@ mode "$mode_gaps_outer" {
 set $polybar ~/.config/polybar/launch.sh
 exec_always --no-startup-id $polybar
 exec_always --no-startup-id nitrogen --restore
-exec_always --no-startup-id compton -b
+exec_always --no-startup-id compton &
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id zsh -c 'xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1'
