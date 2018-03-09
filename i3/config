@@ -1,206 +1,298 @@
-# i3 config file (v4)
-#
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
-# layout.
-#
-# To get a config file with the same key positions, but for your current
-# layout, use the i3-config-wizard
-#
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:monospace 8
-
-set $up l
-set $down k
-set $left j
-set $right semicolon
-
-
-# Estilo de borda
-# class        			border  backgr. text
-client.focused 			#099FB6 #099FB6 #FFFFFF
-client.focused_inactive #A6000000 #A6000000 #FFFFFF
-
-
-
-# Alt tab
-
-bindsym Mod1+Tab exec ~/.config/polybar/scripts/janela.sh -w
-
-
-
-
-# use Mouse+Mod1 to drag floating windows to their wanted position
-floating_modifier Mod1
-
-# start a terminal
-bindsym Mod1+Return exec i3-sensible-terminal
-
-# kill focused window
-bindsym Mod1+f4 kill
-
-# start dmenu (a program launcher)
-bindsym Mod1+d exec ~/.local/share/rofi/scripts/run.sh
-
-
-
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym Mod1+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
-bindsym Mod1+$left focus left
-bindsym Mod1+$down focus down
-bindsym Mod1+$up focus up
-bindsym Mod1+$right focus right
-
-# alternatively, you can use the cursor keys:
-bindsym Mod1+Left focus left
-bindsym Mod1+Down focus down
-bindsym Mod1+Up focus up
-bindsym Mod1+Right focus right
-
-# move focused window
-bindsym Mod1+Shift+$left move left
-bindsym Mod1+Shift+$down move down
-bindsym Mod1+Shift+$up move up
-bindsym Mod1+Shift+$right move right
-
-# alternatively, you can use the cursor keys:
-bindsym Mod1+Shift+Left move left
-bindsym Mod1+Shift+Down move down
-bindsym Mod1+Shift+Up move up
-bindsym Mod1+Shift+Right move right
-
-# split in horizontal orientation
-bindsym Mod1+h split h
-
-# split in vertical orientation
-bindsym Mod1+v split v
-
-# enter fullscreen mode for the focused container
-bindsym Mod1+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym Mod1+s layout stacking
-bindsym Mod1+w layout tabbed
-bindsym Mod1+e layout toggle split
-
-# toggle tiling / floating
-bindsym Mod1+space floating toggle
  
-# change focus between tiling / floating windows
-bindsym Mod1+Shift+space focus mode_toggle
+#############################################################
+############### M A I N #####################################
+#############################################################
+set $mod Mod4
 
-# focus the parent container
-bindsym Mod1+a focus parent
+#hide_edge_borders both
+force_display_urgency_hint 0
+#workspace_auto_back_and_forth yes
+new_window pixel 3
 
-# focus the child container
-#bindsym Mod1+d focus child
+# smart|urgent|focus|none
+#focus_on_window_activation focus
+#focus_follows_mouse no
 
-# move the currently focused window to the scratchpad
-bindsym Mod1+Shift+minus move scratchpad
+#font pango:Source Code Pro, icomoon, Material Icons, FontAwesome 10
+font pango:Source Code Pro 10
 
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym Mod1+minus scratchpad show
+#############################################################
+############### C O L O R S #################################
+#############################################################
+set_from_resource $fg i3wm.foreground #D8DEE9
+set_from_resource $bg i3wm.background #2E3440
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
+
+floating_modifier $mod
+
+#############################################################
+############### B I N D I N G S #############################
+#############################################################
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+
+bindsym $mod+Shift+q kill
+bindsym $mod+q kill
+
+# Rofi
+bindsym $mod+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/dark.rasi -dmenu -p "Google: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} $BROWSER https://www.google.com.br/search?q={}
+#bindsym $mod+Shift+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/dark.rasi -dmenu -p "DuckDuckGo: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} $BROWSER https://duckduckgo.com/?q={}
+bindsym --release Mod1+g exec --no-startup-id exec ~/.config/rofi/scripts/git
+
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/rofi/scripts/janelas
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/drun
+bindsym Mod1+F2 exec --no-startup-id ~/.config/rofi/scripts/run
+bindsym $mod+c exec --no-startup-id ~/.config/rofi/scripts/configs
+bindsym $mod+a exec --no-startup-id ~/.config/rofi/scripts/apps
+bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/scripts/power
+
+#bindsym $mod+Shift+x exec i3lock-fancy -f "Iosevka-Thin" -t "Arch Linux" -p -g -- scrot -z | amixer -q -D pulse sset Master mute
+bindsym $mod+Shift+x exec ~/.local/bin/lockscreen
+
+# Media Hotkeys
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master 1+ toggle
+bindsym $mod+Mod1+Left exec --no-startup-id mpc prev
+bindsym $mod+Mod1+Right exec --no-startup-id mpc next
+
+#bindsym Print exec --no-startup-id ~/bin/screenshot.sh
+bindsym Print exec --no-startup-id ~/.config/rofi/scripts/screenshot
+bindsym Control+Print exec --no-startup-id ~/bin/screenshot.sh -w
+bindsym --release Mod1+Sys_Req exec --no-startup-id ~/bin/screenshot.sh -s
+bindsym $mod+Print exec --no-startup-id ~/bin/screenshot.sh -d
+bindsym $mod+Shift+Print exec --no-startup-id ~/bin/screenshot.sh -g
+
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+c move position center
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+Shift+s sticky toggle
+
+bindsym $mod+Shift+a focus parent
+bindsym $mod+Shift+d focus child
+
+#############################################################
+############### W O R K S P A C E S #########################
+#############################################################
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+set $workspace6 "6:"
+set $workspace7 "7:"
+set $workspace8 "8:"
+set $workspace9 "9:"
+set $workspace10 "10:"
+
+set $default_gaps_inner 10
+set $default_gaps_outer 0
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+#workspace $workspace1 gaps inner 0
+#workspace $workspace1 gaps outer 0
+#workspace $workspace2 gaps inner 0
+#workspace $workspace2 gaps outer 0
+#workspace $workspace3 gaps inner 0
+#workspace $workspace3 gaps outer 0
+
+# Alt+TAB & Alt+Shift+TAB	
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
 
 # switch to workspace
-bindsym Mod1+1 workspace 1
-bindsym Mod1+2 workspace 2
-bindsym Mod1+3 workspace 3
-bindsym Mod1+4 workspace 4
-bindsym Mod1+5 workspace 5
-bindsym Mod1+6 workspace 6
-bindsym Mod1+7 workspace 7
-bindsym Mod1+8 workspace 8
-bindsym Mod1+9 workspace 9
-bindsym Mod1+0 workspace 10
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-bindsym Mod1+Shift+1 move container to workspace 1
-bindsym Mod1+Shift+2 move container to workspace 2
-bindsym Mod1+Shift+3 move container to workspace 3
-bindsym Mod1+Shift+4 move container to workspace 4
-bindsym Mod1+Shift+5 move container to workspace 5
-bindsym Mod1+Shift+6 move container to workspace 6
-bindsym Mod1+Shift+7 move container to workspace 7
-bindsym Mod1+Shift+8 move container to workspace 8
-bindsym Mod1+Shift+9 move container to workspace 9
-bindsym Mod1+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
-# reload the configuration file
-bindsym Mod1+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym Mod1+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym Mod1+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# move to workspaces
+bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Left workspace prev
 
-# resize window (you can also use the mouse for that)
+#bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+
+
+#############################################################
+############### R U L E S ###################################
+#############################################################
+for_window [urgent="latest"] focus
+
+for_window [window_role="pop-up"] floating enable, move position center
+for_window [window_role="bubble"] floating enable, move position center
+for_window [window_role="task_dialog"] floating enable, move position center
+for_window [window_role="Preferences"] floating enable, move position center
+for_window [window_type="dialog"] floating enable, move position center
+for_window [window_type="menu"] floating enable, move position center
+
+for_window [class="(Mate-font-viewer|mpv|Catfish|Engrampa|File-roller|Notes|Agave|Viewnior|Pavucontrol|Galculator|YAD)"] floating enable, move position center
+for_window [class="Lxtask" title="Gerenciador de tarefas"] floating enable, resize set 800 px 600 px, move position center
+for_window [class="^VirtualBox" title="*Executando*"] floating enable
+for_window [title="^Governo do Estado de Mato Grosso do Sul|^Mail do iCloud - Enc|Filtros de mensagens|^etcher-electron|^Skype"] floating enable
+for_window [title="(.*Reiniciar dispositivo.*|Preferências do Thunderbird)"] floating enable
+for_window [title="(Biblioteca|Library|About|Amigos|Steam|Sobre o Mozilla Firefox|VideoCut|dagor2)"] floating enable, move position center
+for_window [title="(War Thunder|War Thunder (Configurações))"] move to workspace $workspace10, floating enable, move position center, border pixel 1
+for_window [title="Lista de amigos"] floating enable, move absolute position 1667 px 0 px, resize set 250 px 400 px
+for_window [title="(screencast$|^DownThemAll|DownThemAll!$)"] move window to scratchpad
+
+assign [class="^(qutebrowser|Epiphany|Chromium|Firefox|firefox-developer)"] $workspace1
+assign [class="(Termite|Tilix|konsole|xfce4-terminal|sakura)"] $workspace2
+assign [class="(^Code*|Pluma|Sublime_text|Atom|nvim|vim|Geany)"] $workspace3
+assign [class="^(Thunar|Pcmanfm|Dolphin)"] $workspace4
+assign [class="(Lxappearance|^Pamac*|Notes|Lxtask|^Mate-disk-usage-analyzer)"] $workspace5
+assign [class="(^Steam)"] $workspace6
+assign [class="(Gtkman|MedleyText)"] $workspace7
+assign [class="(Whatsie|Whatsapp|whatsapp-desktop)"] $workspace8
+assign [class="(^Telegram|^Hexchat)"] $workspace9
+assign [class="(dontstarve_steam)"] $workspace10
+#assign [title="War Thunder"] $workspace10
+
+
+#############################################################
+############### G R O U P S #################################
+#############################################################
+mode "[s]air, [d]esligar, [r]einiciar, [s]uspender" {
+	bindsym s exec i3-msg exit
+	bindsym d exec systemctl poweroff
+	bindsym r exec systemctl reboot
+	bindsym s exec systemctl suspend
+
+	bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Mod1+e mode "[s]air, [d]esligar, [r]einiciar, [s]uspender"
+
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink hesight 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
-        bindsym $down       resize grow height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+bindsym $mod+r mode "resize"
 
-bindsym Mod1+r mode "resize"
+#############################################################
+############### G A P S #####################################
+#############################################################
+set $mode_gaps gaps
+set $mode_gaps_outer outer gaps
+set $mode_gaps_inner inner gaps
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton &
-exec --no-startup-id zsh -c 'setxkbmap -model abnt2 -layout br -variant abnt2'
+bindsym $mod+Shift+g mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
 
+    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
 
-# This is what I use in ie config
-# custom variables for workspaces
-set $ws1 ""
-set $ws2 ""
-set $ws3 ""
-set $ws4 ""
-set $ws5 ""
-set $ws6 6
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
-##==================================================##
-#                         *** Workspace specific settings ***                     #
-##=================================================##
-# Assign Workspaces:
-assign [class="^i3-sensible-terminal"] $ws1
-assign [class="telegram-dekstop"] $ws2
-assign [class="Firefox"] $ws3
-assign [class="^Geany"] $ws4
-assign [class="^thunar"] $ws5 
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     mode "default", gaps inner current set 0
+    bindsym d     mode "default", gaps inner current set $default_gaps_inner
 
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     mode "default", gaps inner all set 0
+    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
 
-exec --no-startup-id i3-msg 'workspace 1:; exec i3-sensible-terminal'
-exec --no-startup-id i3-msg 'workspace 2:; exec telegram-desktop'
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     mode "default", gaps outer current set 0
+    bindsym d     mode "default", gaps outer current set $default_gaps_outer
 
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     mode "default", gaps outer all set 0
+    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
 
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
-# force floating for all new windows
-#for_window [class="[.]*"] floating enable
-
-# Configuraçoes padrão do i3
-exec i3-config-wizard
+#############################################################
+############### I N I T #####################################
+#############################################################
+set $polybar ~/.config/polybar/launch.sh
+exec_always --no-startup-id $polybar
+exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id compton &
