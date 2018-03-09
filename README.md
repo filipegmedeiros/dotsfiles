@@ -32,3 +32,11 @@ Usando o git:
     fc-cache -v -f # Atualize suas fontes
   ~~~ 
   
+  
+  
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## ScreenShots
+
+![Screenshot #1][screenshot1]  
+
+[screenshot1]: https://raw.githubusercontent.com/filipegmedeiros/dotfiles/master/screenshot.png "Screenshot #1"
