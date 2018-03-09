@@ -28,6 +28,7 @@ Usando o git:
   ~~~ sh
     git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
     cd dotfiles/fontes # entre no diretório
-    mv *.ttf  ${HOME}/.local/share/fonts/ # Move as fontes para fc-cache -v -f
-  ~~~
+    mv *.ttf  ${HOME}/.local/share/fonts/ # Move as fontes para a pasta /share/fonts
+    fc-cache -v -f # Atualize suas fontes
+  ~~~ 
   
