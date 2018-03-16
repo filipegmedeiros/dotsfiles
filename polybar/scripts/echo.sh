@@ -1,7 +1,9 @@
 #!/bin/bash
 
+CONSTATE=$(nmcli -fields WIFI g);
 
- echo $( iw dev wlp2s0 link | grep SSID)
-
-
-
+if [[ "$CONSTATE" =~ "enabled" ]]; then
+	echo $( iwgetid -r)
+elif [[ "$CONSTATE" =~ "disabled" ]]; then
+	echo "Sem Internet"
+fi
