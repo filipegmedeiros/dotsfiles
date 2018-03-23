@@ -34,8 +34,7 @@ set mouse=a                             " Ativa o uso do mouse
 "Atalhos:                              
 "=============================================================================
 
-au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape' 
-au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock' 
+
 
 
 map  <S-Insert> <MiddleMouse>                   " Seleciona um bloco de texto com o mouse
@@ -43,6 +42,9 @@ map! <S-Insert> <MiddleMouse>                   " Cola com o botão do meio do m
 
 nnoremap <f1> :NERDTreeToggle<CR>               " Abre o Diretório de arquivos
 let NERDTreeIgnore=['\.pyc$', '\~$']            " Ignora arquivos no diretório
+
+nnoremap <f2> :set list!<CR>                    " Mostra linha na indentação
+set list lcs=tab:\┆⠀                                                        " Mostra linha na indentação
 
 "=============================================================================
 "Plugins:                           
