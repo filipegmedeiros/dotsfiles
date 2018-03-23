@@ -21,14 +21,14 @@ set termguicolors                       " Faz parte do tema do seu vim
 
 set showmode                            " Mostra o modo que você esta (Inserção, Visual ou Comandos)
 set number                              " Numerando as linhas do arquivo
-set confirm                             " Confima se você realmente deseja sair e/ou salvar
+set confirm                              " Confima se você realmente deseja sair e/ou salvar
 set wildmenu                            " Autocomplete dos comandos usando o TAB
 set ruler                               " Mostra a posição do cursor 
 set showcmd                             " Mostra os comandos sendo executados
 set visualbell                          " Em caso de se cometer um comando inválido aciona-se um alarme visual
 set hlsearch                            " Ativa o contraste de cores dando realce a pesquisa de palavras
 set mouse=a                             " Ativa o uso do mouse
-
+set cursorline                          " Deixa a linha do Cursor em destaque
 
 "=============================================================================
 "Atalhos:                              
