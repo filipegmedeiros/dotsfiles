@@ -44,7 +44,7 @@ nnoremap <f1> :NERDTreeToggle<CR>               " Abre o Diretório de arquivos
 let NERDTreeIgnore=['\.pyc$', '\~$']            " Ignora arquivos no diretório
 
 nnoremap <f2> :set list!<CR>                    " Mostra linha na indentação
-set list lcs=tab:\┆⠀                                                        " Mostra linha na indentação
+set list lcs=tab:\┆⠀                            " Mostra linha na indentação
 
 "=============================================================================
 "Plugins:                           
