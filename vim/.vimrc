@@ -13,15 +13,9 @@
 syntax on                               " Faz com que o vim os arquivos de configuração de  cores
 set nocompatible                        " Não deixa próximo do VI
 set encoding=utf-8                      " O estilo de codificação Binária
-
-set background=light                    " Faz parte do tema do seu vim
-colorscheme breezy                      " Faz parte do tema do seu vim
-let g:airline_theme='breezy'            " Faz parte do tema do seu vim
-set termguicolors                       " Faz parte do tema do seu vim
-
 set showmode                            " Mostra o modo que você esta (Inserção, Visual ou Comandos)
 set number                              " Numerando as linhas do arquivo
-set confirm                              " Confima se você realmente deseja sair e/ou salvar
+set confirm                             " Confima se você realmente deseja sair e/ou salvar
 set wildmenu                            " Autocomplete dos comandos usando o TAB
 set ruler                               " Mostra a posição do cursor 
 set showcmd                             " Mostra os comandos sendo executados
@@ -31,10 +25,27 @@ set mouse=a                             " Ativa o uso do mouse
 set cursorline                          " Deixa a linha do Cursor em destaque
 
 "=============================================================================
-"Atalhos:                              
+"Configuração do Tema do Vim
+"============================================================================
+
+set background=light                    " Pode ser Dark
+colorscheme breezy                      " Chama o tema que está baixado
+let g:airline_theme='breezy'            " Ativa o tema do Airline
+set termguicolors                       " Nao sei o que faz, mas é tema
+
+"=============================================================================
+"Configuração do LaTeX 
 "=============================================================================
 
 
+let g:vimtex_view_general_viewer = 'zathura'                     "Não faço ideia
+let g:vimtex_view_general_options = ' file:@pdf\#src:@line@tex'  "Não faço ideia
+nnoremap <f2> :VimtexCompile<CR> 
+syntax enable
+
+"=============================================================================
+"Atalhos:                              
+"=============================================================================
 
 
 map  <S-Insert> <MiddleMouse>                   " Seleciona um bloco de texto com o mouse
@@ -43,8 +54,6 @@ map! <S-Insert> <MiddleMouse>                   " Cola com o botão do meio do m
 nnoremap <f1> :NERDTreeToggle<CR>               " Abre o Diretório de arquivos
 let NERDTreeIgnore=['\.pyc$', '\~$']            " Ignora arquivos no diretório
 
-nnoremap <f2> :set list!<CR>                    " Mostra linha na indentação
-set list lcs=tab:\┆⠀                            " Mostra linha na indentação
 
 "=============================================================================
 "Plugins:                           
@@ -53,9 +62,10 @@ call vundle#begin()
 
  	Plugin 'vim-airline/vim-airline'       " Faz parte do tema do seu vim
 	Plugin 'The-NERD-tree'                 " Plugin diretório de arquivo  
-	Plugin 'Valloric/YouCompleteMe'        " Um autocomplete
-
+	
+	Plugin 'lervag/vimtex'                 " Plugin para LaTeX
+	Plugin 'brennier/quicktex'             " Plugin que faz um autocomplete para LaTeX
 
 call vundle#end()                                                 
+filetype plugin indent on 
 
-filetype plugin indent on                                         " Falta Explicar
