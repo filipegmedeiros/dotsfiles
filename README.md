@@ -21,10 +21,10 @@
 | • [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3)                |
 | • [fontes](https://github.com/filipegmedeiros/dotsfiles/tree/master/fontes)           |
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+## Como usar meus dotfiles?
 
- ```Como usar meus dotfiles?```
- ===========
  
 Usando o git:
   ~~~ sh
