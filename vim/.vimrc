@@ -15,7 +15,7 @@ set nocompatible                        " Não deixa próximo do VI
 set encoding=utf-8                      " O estilo de codificação Binária
 set showmode                            " Mostra o modo que você esta (Inserção, Visual ou Comandos)
 set number                              " Numerando as linhas do arquivo
-set confirm                             " Confima se você realmente deseja sair e/ou salvar
+set confirm                              " Confima se você realmente deseja sair e/ou salvar
 set wildmenu                            " Autocomplete dos comandos usando o TAB
 set ruler                               " Mostra a posição do cursor 
 set showcmd                             " Mostra os comandos sendo executados
@@ -48,9 +48,9 @@ set termguicolors                       " Nao sei o que faz, mas é tema
 
 
 let g:vimtex_view_general_viewer = 'zathura'                     " Abre o arquivo com o Zathura
-let g:vimtex_view_general_options = ' file:@pdf\#src:@line@tex'  " Não faço ideia
+let g:vimtex_view_general_options = ' file:@pdf\#src:@line@tex'   " Não faço ideia
 nnoremap <f2> :VimtexCompile<CR>                                 " Compila o LaTeX
-au BufNewFile,BufRead *.tex set ft=tex                             " Põe o arquivo com o Tex
+au BufNewFile,BufRead *.tex set ft=tex                           " Põe o arquivo com o Tex
 
 syntax enable
 
