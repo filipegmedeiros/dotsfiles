@@ -11,13 +11,13 @@
  ```ÍNDICE```
  ===========
  
-| `Índice`         | 
+| **Índice**         | 
 | --------------------- |
-| * [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar)        |
-| * [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)                    |
-| * [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim)          |
-| * [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3)                |
-| * [fontes](https://github.com/filipegmedeiros/dotsfiles/tree/master/fontes)           |
+| • [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar)        |
+| • [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)                    |
+| • [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim)          |
+| • [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3)                |
+| • [fontes](https://github.com/filipegmedeiros/dotsfiles/tree/master/fontes)           |
 
 
 ## Como usar meus dotfiles? Segue um exemplo
