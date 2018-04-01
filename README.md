@@ -1,8 +1,8 @@
 
-<p style="text-align: center;">
-                          Dotfiles do @usuariolinux                   
-                        Copie, altere, arrume e use
-                       </p>
+
+                         ```  Dotfiles do @usuariolinux   ```                 
+                        ``` Copie, altere, arrume e use``` 
+
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
