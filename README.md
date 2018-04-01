@@ -10,10 +10,10 @@
 
 
 
- ```ÍNDICE```
+ ``ÍNDICE``
  ===========
  
-| **Índice**         | 
+| **Meus Rc files:**         | 
 | --------------------- |
 | • [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar)        |
 | • [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)                    |
