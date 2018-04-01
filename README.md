@@ -21,17 +21,18 @@
 | • [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3)                |
 | • [fontes](https://github.com/filipegmedeiros/dotsfiles/tree/master/fontes)           |
 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Como usar meus dotfiles?
 
+ `` Como usar meus dotfiles? ``
+ ===========
  
 Usando o git:
   ~~~ sh
     git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
     cd dotfiles/ # entre no diretório
     ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
-  ~~~
+  ~~~ ^
+  ~~~
   
   Como instalar as fontes:
   ~~~ sh
