@@ -25,14 +25,18 @@
 
  `` Como usar meus dotfiles? ``
  ===========
- 
+ Usando o git:
+~~~ sh
+    git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
+    cd dotfiles/ # entre no diretório
+    ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
+~~~
 
-  
-  
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
- `` Foto 08/03/18 ``
+ ## Foto  do dia 08/03/18
  ===========
 
 ![Screenshot #1][screenshot1]  
