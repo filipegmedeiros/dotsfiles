@@ -13,7 +13,7 @@
  ``ÍNDICE``
  ===========
  
-| **Meus Rc files:**         | 
+| **Minhas Configs:**         | 
 | --------------------- |
 | • [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar)        |
 | • [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)                    |
@@ -24,14 +24,17 @@
 
 ## Como usar meus dotfiles? Segue um exemplo
 
-Usando o git:
-  ~~~ sh
+ ``Como usar meus dotfiles? Segue um exemplo``
+ ===========
+ 
+`Usando o git:`
+  ~~~ sh
     git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
     cd dotfiles/ # entre no diretório
     ln -s dotfiles/.config/polybar ~/.config/polybar # linke o repositorio
   ~~~
-  Como instalar as fontes:
-  ~~~ sh
+  `Como instalar as fontes:`
+  ~~~ sh
     git clone https://github.com/filipegmedeiros/dotsfiles.git # clone o repositório
     cd dotfiles/fontes # entre no diretório
     mv *.ttf  ${HOME}/.local/share/fonts/ # Move as fontes para a pasta /share/fonts
