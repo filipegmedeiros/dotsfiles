@@ -11,7 +11,7 @@
 
 
  ## ÍNDICE
- ===========
+
  
 | **Minhas Configs:**         | 
 | --------------------- |
@@ -24,7 +24,7 @@
 
 
 ## Como usar meus dotfiles? 
-===========
+
  
  Usando o git:
 ~~~ sh
@@ -47,7 +47,6 @@
 
 
  ## Foto  do dia 08/03/18
- ===========
 
 ![Screenshot #1][screenshot1]  
 
