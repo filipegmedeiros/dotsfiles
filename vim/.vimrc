@@ -62,6 +62,8 @@ syntax enable
 map  <S-Insert> <MiddleMouse>                   " Seleciona um bloco de texto com o mouse
 map! <S-Insert> <MiddleMouse>                   " Cola com o botão do meio do mouse
 
+
+
 nnoremap <f1> :NERDTreeToggle<CR>               " Abre o Diretório de arquivos
 let NERDTreeIgnore=['\.pyc$', '\~$']            " Ignora arquivos no diretório
 
@@ -69,6 +71,7 @@ nmap <c-w> :w<CR>                               " Normal Mode: Salva com Ctrl + 
 imap <c-w> <c-o><c-s>                           " Insert Mode: Vai pro Normal Mode e Salva com Ctrl + S
 nmap <F4> :w<CR>                                " Normal Mode: Salva com F4
 imap <F4> <c-o><F2>                             " Insert Mode: Vai pro Normal Mode e Salva com F4
+imap jk <Esc>                                   " Insert Mode: Vai pro Normal Mode com jk
 
 
 
