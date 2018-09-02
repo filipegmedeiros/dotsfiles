@@ -22,7 +22,7 @@ Categoria                          | Atalhos                           | Descri√
 |                                  | `<Ctrl-s>c`                       | Fecha o projeto
 |                                  | `<Ctrl-s>s`                       | Salva o projeto
 |                                  | `<Ctrl-s>d`                       | Deleta o projeto
-|**Buffer management**             |                                   |
+|**Buffer management**              |                                   |
 |                                  | `<Ctrl-c>`                        | Close current buffer
 |                                  | `<Ctrl-c-a>`                      | Close all buffers
 |                                  | `<Ctrl-Alt-c>`                    | Close all buffers but the current one
@@ -31,9 +31,9 @@ Categoria                          | Atalhos                           | Descri√
 |                                  | `<Ctrl-Shift-Tab>`                | Go to previous buffer
 |                                  | `<Ctrl-Down>`                     | Scroll buffer by one line (down)
 |                                  | `<Ctrl-Up>`                       | Scroll buffer by one line (up)
-|**Buffer modes**                  |                                   |
+|**Buffer modes**                   |                                   |
 |                                  | `jk`                              | Entra em `normal` mode
-|**Buffer editing**                |                                   |
+|**Buffer editing**                 |                                   |
 |                                  | `<Ctrl-a>`                        | Select all
 |                                  | `<Ctrl-x>`                        | Corta
 |                                  | `y`                               | Copia
@@ -79,16 +79,15 @@ Categoria                          | Atalhos                           | Descri√
 |**Build management**              |                                   |
 |                                  | `<F7>`                            | Build project.
 |**SCM Git client**                |                                   |
-|                                  | `:Gstatus`                        | Runs `git status`
-|                                  | `:Gcommit`                        | Runs `git commit`
-|                                  | `:Gmerge`                         | Runs `git merge`
-|                                  | `:Gpull`                          | Runs `git pull`
-|                                  | `:Gpush`                          | Runs `git push`
-|                                  | `:Gfetch`                         | Runs `git fetch`
-|                                  | `:Glog`                           | Runs `git log`
-|                                  | `:Gdiff`                          | Runs `git diff`
-|                                  | `:Gblame`                         | Runs `git blame`
+|                                  | `:Gstatus`                        | Roda o  `git status`
+|                                  | `:Gcommit`                        | Roda o  `git commit`
+|                                  | `:Gmerge`                         | Roda o  `git merge`
+|                                  | `:Gpull`                          | Roda o  `git pull`
+|                                  | `:Gpush`                          | Roda o  `git push`
+|                                  | `:Gfetch`                         | Roda o `git fetch`
+|                                  | `:Glog`                           | Roda o `git log`
+|                                  | `:Gdiff`                           | Roda o `git diff`
+|                                  | `:Gblame`                         | Roda o `git blame`
 |**Misc**                          |                                   |
-|                                  | `:zsh`                             | Enter the `zsh` shell
-
+|                                  | `:zsh`                            | Enter no shell `zsh` 
 
