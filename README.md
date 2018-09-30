@@ -4,9 +4,9 @@
                         ``` Copie, altere, arrume e use``` 
 
 <p align="center">
-    <a href="https://github.com/filipegmedeiros/github_django_ticket">
-        <img src="https://img.shields.io/badge/VERSION-V.10-red.svg?longCache=true&style=for-the-badge"
-             alt="Progresso do Projeto" /></a>
+    <a href="https://github.com/filipegmedeiros/github_django_ticket/blob/master/LICENSE.md">
+        <img src="https://img.shields.io/github/license/filipegmedeiros/github_django_ticket.svg?longCache=true&style=for-the-badge"
+             alt="License" /></a>
 </p>
 
 
