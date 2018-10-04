@@ -5,6 +5,7 @@
 
 <p align="center">
     <a href="https://github.com/filipegmedeiros/dotsfiles/blob/master/LICENSE.md">
+          <a href="https://github.com/filipegmedeiros/dotsfiles/releases"><img src="https://img.shields.io/github/tag/filipegmedeiros/dotsfiles.svg"></a>
         <img src="https://img.shields.io/github/license/filipegmedeiros/github_django_ticket.svg?longCache=true&style=for-the-badge"
              alt="License" /></a>
 </p>
