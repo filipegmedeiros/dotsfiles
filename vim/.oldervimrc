@@ -15,7 +15,7 @@ set nocompatible                        " Não deixa próximo do VI
 set encoding=utf-8                      " O estilo de codificação Binária
 set showmode                            " Mostra o modo que você esta (Inserção, Visual ou Comandos)
 set number                              " Numerando as linhas do arquivo
-set confirm                             " Confima se você realmente deseja sair e/ou salvar
+set confirm                              " Confima se você realmente deseja sair e/ou salvar
 set wildmenu                            " Autocomplete dos comandos usando o TAB
 set ruler                               " Mostra a posição do cursor 
 set showcmd                             " Mostra os comandos sendo executados
@@ -24,7 +24,6 @@ set hlsearch                            " Ativa o contraste de cores dando realc
 set mouse=a                             " Ativa o uso do mouse
 set cursorline                          " Deixa a linha do Cursor em destaque
 
-:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 "============================================================================
 " Configuração de Identação
 "============================================================================
@@ -38,16 +37,11 @@ set expandtab                          " Troca o Tab por Espaços
 "Configuração do Tema do Vim
 "============================================================================
 
-set background=light                          " Pode ser Dark
-set t_Co=256
-set t_ut=
-colorscheme sublimemonokai                    " Chama o tema que está baixado
-let g:airline_theme='wombat'                  " Ativa o tema do Airline
-let g:airline_powerline_fonts = 1
-"set termguicolors                             " Nao sei o que faz, mas é tema
+set background=light                    " Pode ser Dark
+colorscheme breezy                      " Chama o tema que está baixado
+let g:airline_theme='breezy'            " Ativa o tema do Airline
+set termguicolors                       " Nao sei o que faz, mas é tema
 
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1       " Mostra os erros do ALE na airline
 "=============================================================================
 "Configuração do LaTeX 
 "=============================================================================
@@ -75,9 +69,7 @@ nmap <c-w> :w<CR>                               " Normal Mode: Salva com Ctrl + 
 imap <c-w> <c-o><c-s>                           " Insert Mode: Vai pro Normal Mode e Salva com Ctrl + S
 nmap <F4> :w<CR>                                " Normal Mode: Salva com F4
 imap <F4> <c-o><F2>                             " Insert Mode: Vai pro Normal Mode e Salva com F4
-imap jk <Esc>                                   " Insert Mode: Vai para o Normal com jk
-map <F7> mzgg=G`z                               " Arruma a Identação automaticamente
-map <F12> "+y                                   " Copia a Seleção para o Clipboar:w
+
 
 
 
@@ -88,22 +80,11 @@ map <F12> "+y                                   " Copia a Seleção para o Clipb
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
- 	Plugin 'vim-airline/vim-airline'        " Faz parte do tema do seu vim
-	Plugin 'The-NERD-tree'                  " Plugin diretório de arquivo  
+ 	Plugin 'vim-airline/vim-airline'       " Faz parte do tema do seu vim
+	Plugin 'The-NERD-tree'                 " Plugin diretório de arquivo  
 	
-	Plugin 'lervag/vimtex'                  " Plugin para LaTeX
-	Plugin 'brennier/quicktex'              " Plugin que faz um autocomplete para LaTeX
-   	Plugin 'vim-airline/vim-airline-themes' " Faz parte do Tema do seu vim
-
-
-    Plugin 'sheerun/vim-polyglot'
-"    Plugin 'VundleVim/Vundle.vim'
-    Plugin 'airblade/vim-gitgutter'
-    Plugin 'junegunn/fzf'
-    Plugin 'junegunn/fzf.vim'
-    Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'tpope/vim-surround'
-    Plugin 'w0rp/ale'
+	Plugin 'lervag/vimtex'                 " Plugin para LaTeX
+	Plugin 'brennier/quicktex'             " Plugin que faz um autocomplete para LaTeX
 
 call vundle#end()                                                 
 filetype plugin indent on 

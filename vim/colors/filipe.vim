@@ -8,18 +8,7 @@ if exists("syntax on")
 syntax reset
 endif
 
-if !has('gui_running') && &t_Co < 256
-  finish
-endif
-
-if !exists('g:sublimemonokai_gui_italic')
-    let g:sublimemonokai_gui_italic = 1
-endif
-
-if !exists('g:sublimemonokai_term_italic')
-    let g:sublimemonokai_term_italic = 0
-endif
-
+set t_Co=256
 let g:colors_name = "breezy"
 
 
