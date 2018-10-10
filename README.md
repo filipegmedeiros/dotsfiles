@@ -16,22 +16,22 @@
 
  ## ÍNDICE
 
-| **Instalador:**                                                                  | 
-| ----------------------------------------------------------------------------------- |
-| • [instalador](https://github.com/filipegmedeiros/dotsfiles/tree/master/instalador)   |  
+| **Instalador:**                                                                       | 
+| -----------------------------------------------------------------------------------   |
+| • [instalador](https://github.com/filipegmedeiros/dotsfiles/tree/master/instalador)   | 
   
-| **Minhas Configs:**                                                                  | 
-| ----------------------------------------------------------------------------------- |
+| **Minhas Configs:**                                                                   | 
+| ------------------------------------------------------------------------------------- |
 | • [pacman](https://github.com/filipegmedeiros/dotsfiles/tree/master/pacman)           |
 | • [zsh](https://github.com/filipegmedeiros/dotsfiles/tree/master/zsh)                 |
 | • [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3)                   |
-| • [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)                 |
+| • [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)               |
 | • [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim)                 |
 | • [tilix](https://github.com/filipegmedeiros/dotsfiles/tree/master/tilix)             |
 | • [dunst](https://github.com/filipegmedeiros/dotsfiles/tree/master/dunst)             |
 | • [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar)         |
 | • [fontes](https://github.com/filipegmedeiros/dotsfiles/tree/master/fontes)           |
-
+| • [wallpapers](https://github.com/filipegmedeiros/dotsfiles/tree/master/wallpapers)   |
 
 
 
