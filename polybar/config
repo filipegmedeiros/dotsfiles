@@ -81,9 +81,11 @@ font-1 = feather:pixelsize=11;2
 ;font-2 = feather:pixelsize=14;2
 font-2 = Wuncon Siji:pixelsize=11;2
 
+
+
 modules-left = launch i3
 modules-center =  window
-modules-right = keyboard clock calendar volume backlight  memory wifi  powermenu
+modules-right = keyboard clock calendar volume  memory battery wifi powermenu
 
 
 
@@ -236,7 +238,7 @@ format-prefix-foreground = ${colors.destaque}
 ;  M07		        V O L U M E
 ;----------------------------------------------------------
 [module/volume]
-type = internal/volume
+type = internal/alsa
 format-volume = <ramp-volume> <label-volume>
 ;format-volume = <label-volume>
 
@@ -292,7 +294,6 @@ click-left = lxtask &
 type = custom/script
 interval = 1
 exec =  ~/.config/polybar/scripts/echo.sh 1
-click-left = ~/.config/polybar/scripts/wifi-menu.sh
 label = %output%
 format = <label>
 format-prefix = " "
@@ -326,6 +327,9 @@ ramp-capacity-4 = 
 animation-charging-foreground = ${colors.destaque}
 animation-charging-0 = 
 animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-framerate = 750
 
 
@@ -373,14 +377,3 @@ menu-3-0 = " DESLIGAR? "
 menu-3-0-background = ${colors.alerta}
 menu-3-0-foreground = ${colors.letras-dentro}
 menu-3-0-exec = systemctl poweroff
-
-;----------------------------------------------------------
-;  M13	  M E N U
-;----------------------------------------------------------
-
-[module/jgmenu]
-type = custom/script
-label-padding = 2
-interval = 120
-exec = echo "menu"
-click-left = "jgmenu_run >/dev/null 2>&1 &"
