@@ -53,6 +53,7 @@
 
 
  ## Foto  do dia 10/10/18
+<p align="center">
+  <img src="https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/imgs/v2-0)09-10-18.png" >
+</p>
 
-![Screenshot #1][screenshot1]  
-[screenshot1]: https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/imgs/v2-0)09-10-18.png "Screenshot #1"
