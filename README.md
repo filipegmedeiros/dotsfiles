@@ -16,19 +16,22 @@
 
  ## ÍNDICE
 
- 
-| **Minhas Configs:**         | 
-| --------------------- |
+| **Instalador:**                                                                  | 
+| ----------------------------------------------------------------------------------- |
+| • [instalador](https://github.com/filipegmedeiros/dotsfiles/tree/master/instalador)   |  
+  
+| **Minhas Configs:**                                                                  | 
+| ----------------------------------------------------------------------------------- |
 | • [pacman](https://github.com/filipegmedeiros/dotsfiles/tree/master/pacman)           |
 | • [zsh](https://github.com/filipegmedeiros/dotsfiles/tree/master/zsh)                 |
 | • [i3](https://github.com/filipegmedeiros/dotsfiles/tree/master/i3)                   |
-| • [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)               |
+| • [rofi](https://github.com/filipegmedeiros/dotsfiles/tree/master/rofi)                 |
 | • [vim](https://github.com/filipegmedeiros/dotsfiles/tree/master/vim)                 |
 | • [tilix](https://github.com/filipegmedeiros/dotsfiles/tree/master/tilix)             |
 | • [dunst](https://github.com/filipegmedeiros/dotsfiles/tree/master/dunst)             |
 | • [polybar](https://github.com/filipegmedeiros/dotsfiles/tree/master/polybar)         |
 | • [fontes](https://github.com/filipegmedeiros/dotsfiles/tree/master/fontes)           |
-| • [instalador](https://github.com/filipegmedeiros/dotsfiles/tree/master/instalador)   |
+
 
 
 
@@ -52,4 +55,4 @@
  ## Foto  do dia 10/10/18
 
 ![Screenshot #1][screenshot1]  
-[screenshot1]: https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/imgs/v2-0)10-10-18.png "Screenshot #1"
+[screenshot1]: https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/imgs/v2-0)09-10-18.png "Screenshot #1"
