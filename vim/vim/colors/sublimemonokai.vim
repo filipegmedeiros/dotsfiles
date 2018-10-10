@@ -88,7 +88,6 @@ call s:create_palette_color('darkgrey',    { 'gui': '#64645e', 'cterm': '239' })
 call s:create_palette_color('warmgrey',    { 'gui': '#75715E', 'cterm': '59'  })
 
 call s:create_palette_color('pink',        { 'gui': '#8aa234', 'cterm': '97' })
-"call s:create_palette_color('pink',        { 'gui': '#f34a72', 'cterm': '97' })
 call s:create_palette_color('green',       { 'gui': '#a6e22d', 'cterm': '148' })
 call s:create_palette_color('aqua',        { 'gui': '#8885b2', 'cterm': '81'  })
 call s:create_palette_color('yellow',      { 'gui': '#90C2FF', 'cterm': '186' })

@@ -1,0 +1,100 @@
+
+;		        C O L O R S
+;----------------------------------------------------------
+; 100%: FF - 95%: F2 - 90%: E6 - 85%: D9 - 80%: CC - 75%: BF - 70%: B3 - 65%: A6 - 60%: 99 - 55%: 8C 
+; 50%: 80 - 45%: 73 - 40%: 66 - 35%: 59 - 30%: 4D - 25%: 40 - 20%: 33 - 15%: 26 - 10%: 1A - 5%: 0D - 0%: 00
+
+[colors]
+transparente = #0E0B0B
+primeiro-plano = #FF0000
+background = #000000
+unfocused = #a8adb5
+urgent = #FF0000
+destaque = #587A89
+
+[settings]
+screenchange-reload = true
+
+
+;----------------------------------------------------------
+;		        B A R R A - N O T E B O O K
+;----------------------------------------------------------
+[bar/notebook]
+monitor = ${env:MONITOR:LVDS-1}
+width = 100%
+height = 22
+offset-y = -1
+top = true
+;override-redirect = true
+
+background = ${colors.transparente}
+primeiro-plano = ${colors.primeiro-plano}
+fixed-center = true
+overline-size = 2
+overline-color = #bc92f8
+underline-size = 2
+underline-color = #bc92f8
+
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = Monospace:size=11;2
+font-1 = Entypo:size=11;2
+font-2 = feather:pixelsize=11;2T
+
+modules-left = jgmenu i3
+modules-center =  
+modules-right = 
+
+
+;----------------------------------------------------------
+;		        M E N U
+;----------------------------------------------------------
+
+[module/jgmenu]
+type = custom/script
+format = <label>
+format-prefix = " Menu"
+format-prefix-foreground = ${colors.destaque}
+label = " "
+interval = 120
+exec = echo "menu"
+click-left = "jgmenu_run >/dev/null 2>&1 &"
+
+;----------------------------------------------------------
+;		        I 3
+;----------------------------------------------------------
+[module/i3]
+type = internal/i3
+
+;    T                 
+;          
+
+
+
+
+strip-wsnumbers = true
+
+format = <label-state> <label-mode>
+format-spacing = 0
+label-font = 5
+
+
+label-focused-font = 5
+label-focused =  %name%
+label-focused-padding = 4
+label-focused-foreground = ${colors.destaque}
+
+label-unfocused-font = 5
+label-unfocused = %name%
+label-unfocused-padding = 4
+label-unfocused-foreground = ${colors.unfocused}
+
+label-urgent-font = 5
+label-urgent = %name%
+label-urgent-padding = 4
+label-urgent-foreground = ${colors.urgent}
+
+label-visible-font = 5
+label-visible = %name%
+label-visible-padding = 4

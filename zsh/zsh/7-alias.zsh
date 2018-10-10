@@ -17,6 +17,7 @@
     alias chmod="chmod -c"
     alias chown="chown -c"
     alias mkdir="mkdir -v"
+    alias tree="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'"
 
     alias reboot='sudo reboot -h now' 
     alias shutdown='sudo shutdown -h now' 
@@ -28,4 +29,5 @@
 
     alias scrt="scrot ~/Imagens/Capturas/'%B %d, %H:%M:%S.png'"
 
+    alias cat="pygmentize -g"
 #}

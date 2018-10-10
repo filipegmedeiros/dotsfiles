@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rofi -theme "$HOME/.config/rofi/themes/lateral.rasi" -lines 0 -show drun  -lines 8 -line-margin 4 -width 20 -padding 16
+
+

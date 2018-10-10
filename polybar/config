@@ -1,24 +1,38 @@
 ;----------------------------------------------------------
-;		        C O L O R S
+;		       C O R E S 
 ;----------------------------------------------------------
-; 100%: FF - 95%: F2 - 90%: E6 - 85%: D9 - 80%: CC - 75%: BF - 70%: B3 - 65%: A6 - 60%: 99 - 55%: 8C 
-; 50%: 80 - 45%: 73 - 40%: 66 - 35%: 59 - 30%: 4D - 25%: 40 - 20%: 33 - 15%: 26 - 10%: 1A - 5%: 0D - 0%: 00
 
 [colors]
-transparente = #A6000000
-foreground = #D8DEE9
-background = #2E3440
-unfocused = #a8adb5
-urgent = #FF0000
-destaque = #587A89
 
+transparente = #A6000000
+background = #191919
+
+primeiro-plano = #D7FF87
+destaque = #FFD75F
+
+;primeiro-plano = #466700
+;destaque = #D7FF87
+
+letras = #B3B3B3
+letras-dentro = #000
+
+alerta = #FFD75F
+
+laranja = #FFD75F
+azul-claro = #5FD7FF
+azul-visudo = #AFD7FF
+amarelo-verde = #D7FF87
+roxo = #875FAF
+cinza = #FFD75F
+
+
+;----------------------------------------------------------
+;		        B A R / NOTEBOOK 
+;----------------------------------------------------------
 [settings]
 screenchange-reload = true
 
-;----------------------------------------------------------
-;		        B A R / T O P
-;----------------------------------------------------------
-[bar/top]
+[bar/notebook]
 monitor = ${env:MONITOR:LVDS-1}
 width = 100%
 height = 30
@@ -26,8 +40,33 @@ offset-y = -1
 top = true
 ;override-redirect = true
 
+background = ${colors.background}
+foreground = ${colors.letras}
+fixed-center = true
+
+module-margin-right = 2
+
+font-0 = Fira:size=10;3
+font-1 = feather:pixelsize=11;3
+font-2 = Fira:size=8;1
+
+modules-left = launch i3
+modules-center =  window
+modules-right = keyboard clock calendar volume backlight battery wifi  powermenu
+
+;----------------------------------------------------------
+;		        B A R / HDMI / MONITOR
+;----------------------------------------------------------
+[bar/monitor]
+monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 30
+offset-y = -1
+top = true
+;override-redirect = true
+
 background = ${colors.transparente}
-foreground = ${colors.foreground}
+primeiro-plano = ${colors.primeiro-plano}
 fixed-center = true
 overline-size = 2
 overline-color = #bc92f8
@@ -44,207 +83,44 @@ font-2 = Wuncon Siji:pixelsize=11;2
 
 modules-left = launch i3
 modules-center =  window
-modules-right = clock calendar volume backlight battery memory wifi powermenu
+modules-right = keyboard clock calendar volume backlight  memory wifi  powermenu
 
-;----------------------------------------------------------
-;		        W I N D O W
-;----------------------------------------------------------
-[module/window]
-type = custom/script
-interval = 0.1
-format-prefix = " "
-format-prefix-foreground = ${colors.destaque}
-label = %output:0:45:...%  %{B- -o -u}
-;label = %output:0:50:...%
-click-left = ~/.config/polybar/scripts/janela.sh -i
-click-middle = ~/.config/polybar/scripts/janela.sh -c
-click-right = ~/.config/polybar/scripts/janela.sh -w
-exec = ~/.config/polybar/scripts/janela.sh
-
-;----------------------------------------------------------
-;			 C A L E N D A R
-;----------------------------------------------------------
-[module/calendar]
-type = custom/script
-interval = 60.0
-exec =  ~/.config/polybar/scripts/calendar.sh short
-click-left = notify-send "Data" "$(date +"%A, %d de %B de %Y")" &
-click-right = gsimplecal &
-label = %output%
-format = <label>
-format-prefix = "  "
-format-prefix-foreground = ${colors.destaque}
-
-;----------------------------------------------------------
-;			 C L O C K
-;----------------------------------------------------------
-
-[module/clock]
-type = custom/script
-interval = 1
-exec =  ~/.config/polybar/scripts/clock.sh 1
-click-left = ~/.config/rofi/scripts/alarme &
-label = %output%
-format = <label>
-format-prefix = "  "
-format-prefix-foreground = ${colors.destaque}
-
-;----------------------------------------------------------
-;			 B A T T E R Y
-;----------------------------------------------------------
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC0
-poll-interval = 5
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity>  <label-discharging> 
-time-format = %H:%M
-
-label-charging = %percentage%%
-label-discharging = %percentage%% %{F#587A89} left %{F-} %time%h
-
-ramp-capacity-foreground = ${colors.destaque}
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-animation-charging-foreground = ${colors.destaque}
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-framerate = 750
-
-;----------------------------------------------------------
-;		        V O L U M E
-;----------------------------------------------------------
-[module/volume]
-type = internal/volume
-format-volume = <ramp-volume> <label-volume>
-;format-volume = <label-volume>
-
-ramp-volume-foreground = ${colors.destaque}
-
-label-volume = %percentage%%
-
-label-muted = " sem som"
-format-muted-background = #587A89
-format-volume-muted = <label-muted>
-format-muted-prefix-foreground = ${colors.destaque}
-ramp-volume-0 = 
-ramp-volume-1 =
-ramp-volume-2 =
-ramp-volume-3 =
-;----------------------------------------------------------
-;		    P O W E R   M E N U
-;----------------------------------------------------------
-[module/powermenu]
-type = custom/menu
-format-spacing = 1
-expand-right = true
-
-label-open = ""
-label-open-padding = 1
-label-open-background = ${colors.destaque}
-label-close = ""
-label-close-foreground = #587A89
-;label-separator = " "
-label-separator =" "
-label-open-foreground = #FFFFFF	
-
-menu-0-0 = "sair i3"
-menu-0-0-exec = menu-open-1
-
-menu-0-1 = "reiniciar"
-menu-0-1-exec = menu-open-2
-
-menu-0-2 = "desligar"
-menu-0-2-exec = menu-open-3
-
-
-
-menu-1-0 = " Realmente sair do I3? "
-menu-1-0-exec = i3-msg exit
-menu-1-0-background = #587A89
-menu-1-0-foreground = #FFFFFF
-
-menu-2-0 = " REINICIAR? "
-menu-2-0-background = #FF0000
-menu-2-0-foreground = #FFFFFF
-menu-2-0-exec = systemctl reboot
-
-menu-3-0 = " DESLIGAR? "
-menu-3-0-background = #FF0000
-menu-3-0-foreground = #FFFFFF
-menu-3-0-exec = systemctl poweroff
 
 
 ;----------------------------------------------------------
-;			L A U N C H E R
+;	 M01		L A U N C H E R
 ;----------------------------------------------------------
 [module/launch]
 type = custom/text
 content = ""
 content-padding = 1
-content-background = ${colors.destaque}
-content-foreground = #FFFFFF
+content-background = ${colors.primeiro-plano}
+content-foreground = ${colors.letras-dentro}
 click-left = ~/.config/rofi/scripts/drun &
 click-middle = ~/.config/rofi/scripts/run &
 click-right = ~/.config/rofi/scripts/drun &
 
 
-;----------------------------------------------------------
-;		        M E M O R Y
-;----------------------------------------------------------
-[module/memory]
-type = custom/script
-interval = 1
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.destaque}
-label = %output:%%
-exec = ~/.config/polybar/scripts/mem.sh
-click-left = lxtask &
 
 ;----------------------------------------------------------
-;		        N E T W O R K
-;----------------------------------------------------------
-[module/wifi]
-type = custom/script
-interval = 1
-exec =  ~/.config/polybar/scripts/echo.sh 1
-click-left = ~/.config/polybar/scripts/wifi-menu.sh
-label = %output%
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.destaque}
-
-
-
-;----------------------------------------------------------
-;		        I 3
+;   M02		        I 3
 ;----------------------------------------------------------
 [module/i3]
 type = internal/i3
 
-;                     
-;          
+; Precisa seguir a Sequencia do i3 config
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-;ws-icon-default = 
+ws-icon-8 = 9;
+ws-icon-9 = 10;
+
 
 
 strip-wsnumbers = true
@@ -262,19 +138,124 @@ label-focused-foreground = ${colors.destaque}
 label-unfocused-font = 5
 label-unfocused = %name%
 label-unfocused-padding = 4
-label-unfocused-foreground = ${colors.unfocused}
+label-unfocused-foreground = ${colors.letras}
 
 label-urgent-font = 5
 label-urgent = %name%
 label-urgent-padding = 4
-label-urgent-foreground = ${colors.urgent}
+label-urgent-foreground = ${colors.destaque}
 
 label-visible-font = 5
 label-visible = %name%
 label-visible-padding = 4
 
 ;----------------------------------------------------------
-;		        B A C K  L I G H T
+;  M03		        W I N D O W
+;----------------------------------------------------------
+[module/window]
+type = custom/script
+interval = 1
+format-prefix = " "
+format-prefix-foreground = ${colors.destaque}
+label = %output:0:40:...%
+click-left = ~/.config/polybar/scripts/janela.sh -i
+click-middle = ~/.config/polybar/scripts/janela.sh -c
+click-right = ~/.config/polybar/scripts/janela.sh -w
+exec = ~/.config/polybar/scripts/janela.sh
+
+;----------------------------------------------------------
+;	M04        T E C L A D O 
+;----------------------------------------------------------
+
+
+[module/keyboard]
+type = internal/xkeyboard
+
+
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+blacklist-2 = caps lock
+
+format-prefix = ""
+format-prefix-foreground = ${colors.destaque}
+
+format = <label-layout> <label-indicator>
+format-spacing = 0
+
+label-layout =%layout%
+label-layout-padding = 2
+label-indicator-padding = 2
+label-underline = ${colors.destaque}
+label-indicator-background = #8139e8
+
+
+label-layout-foreground = #FFFFF
+
+; Available tokens:
+;   %name%
+; Default: %name%
+label-indicator = %name%
+;label-indicator-padding = 2
+;label-indicator-background = #8139e8
+
+label-layout-icon-default = some-icon-0
+label-layout-icon-0 = us;some-icon-1
+label-layout-icon-1 = br;some-icon-2
+
+;----------------------------------------------------------
+; M05			 C L O C K
+;----------------------------------------------------------
+
+[module/clock]
+type = custom/script
+interval = 1
+exec =  ~/.config/polybar/scripts/clock.sh 1
+click-left = ~/.config/rofi/scripts/alarme &
+label = %output%
+format = <label>
+format-prefix = "  "
+format-prefix-foreground = ${colors.destaque}
+
+
+;----------------------------------------------------------
+;  M06			 C A L E N D A R
+;----------------------------------------------------------
+[module/calendar]
+type = custom/script
+interval = 60.0
+exec =  ~/.config/polybar/scripts/calendar.sh short
+click-left = notify-send "Data" "$(date +"%A, %d de %B de %Y")" &
+click-right = gsimplecal &
+label = %output%
+format = <label>
+format-prefix = "  "
+format-prefix-foreground = ${colors.destaque}
+
+
+;----------------------------------------------------------
+;  M07		        V O L U M E
+;----------------------------------------------------------
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <label-volume>
+;format-volume = <label-volume>
+
+ramp-volume-foreground = ${colors.destaque}
+
+label-volume = %percentage%%
+
+label-muted = " sem som"
+format-muted-foreground = ${colors.letras-dentro}
+format-muted-background = ${colors.primeiro-plano}
+format-volume-muted = <label-muted>
+format-muted-prefix-foreground = ${colors.destaque}
+ramp-volume-0 = 
+ramp-volume-1 =
+ramp-volume-2 =
+ramp-volume-3 =
+
+;----------------------------------------------------------
+; M08		        B A C K  L I G H T
 ;----------------------------------------------------------
 
 [module/backlight]
@@ -290,3 +271,116 @@ format-prefix-foreground = ${colors.destaque}
 
 label = %output%%
 format-padding = 
+
+;----------------------------------------------------------
+;   M09 		        M E M O R Y
+;----------------------------------------------------------
+[module/memory]
+type = custom/script
+interval = 1
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.destaque}
+label = %output:%%
+exec = ~/.config/polybar/scripts/mem.sh
+click-left = lxtask &
+
+;----------------------------------------------------------
+;  M10		        N E T W O R K
+;----------------------------------------------------------
+[module/wifi]
+type = custom/script
+interval = 1
+exec =  ~/.config/polybar/scripts/echo.sh 1
+click-left = ~/.config/polybar/scripts/wifi-menu.sh
+label = %output%
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.destaque}
+
+
+
+;----------------------------------------------------------
+;  M11			 B A T T E R Y
+;----------------------------------------------------------
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+poll-interval = 5
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging> 
+time-format = %H:%M
+
+label-charging = %percentage%%
+label-discharging = %percentage%% %{F#FFD75F}  %{F-} %time%h
+
+ramp-capacity-foreground = ${colors.destaque}
+ramp-capacity-0 =  
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-foreground = ${colors.destaque}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-framerate = 750
+
+
+
+
+;----------------------------------------------------------
+;  M12		    P O W E R   M E N U
+;----------------------------------------------------------
+[module/powermenu]
+type = custom/menu
+format-spacing = 1
+expand-right = true
+
+label-open = ""
+label-open-padding = 1
+label-open-background = ${colors.primeiro-plano}
+label-close = ""
+label-close-foreground = ${colors.destaque}
+;label-separator = " "
+label-separator =" "
+label-open-foreground = ${colors.letras-dentro}	
+
+menu-0-0 = "sair i3"
+menu-0-0-exec = menu-open-1
+
+menu-0-1 = "reiniciar"
+menu-0-1-exec = menu-open-2
+
+menu-0-2 = "desligar"
+menu-0-2-exec = menu-open-3
+
+
+
+menu-1-0 = " Realmente sair do I3? "
+menu-1-0-exec = i3-msg exit
+menu-1-0-background = ${colors.alerta}
+menu-1-0-foreground = ${colors.letras-dentro}
+
+menu-2-0 = " REINICIAR? "
+menu-2-0-background = ${colors.alerta}
+menu-2-0-foreground = ${colors.letras-dentro}
+menu-2-0-exec = systemctl reboot
+
+menu-3-0 = " DESLIGAR? "
+menu-3-0-background = ${colors.alerta}
+menu-3-0-foreground = ${colors.letras-dentro}
+menu-3-0-exec = systemctl poweroff
+
+;----------------------------------------------------------
+;  M13	  M E N U
+;----------------------------------------------------------
+
+[module/jgmenu]
+type = custom/script
+label-padding = 2
+interval = 120
+exec = echo "menu"
+click-left = "jgmenu_run >/dev/null 2>&1 &"

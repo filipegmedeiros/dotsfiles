@@ -11,6 +11,8 @@
     source $ZSH/oh-my-zsh.sh
 
     # Plugins do zsh ( synstax-highlighting e substring-search)
+
     source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
     source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
     source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+

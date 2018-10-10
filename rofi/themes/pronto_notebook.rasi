@@ -1,0 +1,106 @@
+
+configuration {
+	display-drun:    "Abrir:";
+}
+
+*{
+
+/*
+ * C O R E S
+ */
+
+    background-color:            rgba(25,25,25, 0.9); // FUNDO
+    selected-normal-background:  rgba(215, 255, 135, 0.5); // FUNDO_SELECIONADO
+    normal-background:           rgba(0,0,0,0);
+    alternate-normal-background: rgba(0,0,0,0);
+    transparente:                rgba(0,0,0,0);
+
+
+    fonte-em-destaque:          #FFD75F; // TEXTO_DESTAQUE
+    fonte-sem-destaque:         #B3B3B3; //TEXTO_SEM_DESTAQUE
+    cor-do-abrir:               #FFD75F;
+    font:                       "Anonymous Pro Regular 12";
+
+}
+
+window {
+    background-color: @transparente;
+    fullscreen: false;
+	location:	 west;
+	anchor:		 west;
+	height:		 100%;
+	width:		 23%;
+	orientation: horizontal;
+	children:	 [mainbox];
+    border:  0px 0px -4px 0px;
+    text-color: @cinza;
+	transparency: "real";
+}
+
+#dummy {
+    expand: true;
+
+}
+
+
+#inputbar {
+    background-color: #191919;
+    border-color: #191919;
+	padding: 0px;
+	spacing: 5px;
+    border: 9px 0px 0px 3px; //bordas DA BARRA DE ABRIR
+
+
+}
+
+#mainbox {
+    expand: false;
+    spacing: 0em;
+}
+
+#listview {
+
+    background-color: @transparente;
+    fixed-height: 0;
+    border-color: @transparente;
+    spacing:      2px;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+    border-color: @transparente;
+}
+
+#prompt {
+    background-color: @transparente; //ABRIR
+
+    text-color: @cor-do-abrir; //COR DO ABRIR
+
+
+}
+
+#entry {
+
+    background-color: #191919;
+	font: "Anonymous Pro Italic 11";
+	width: 15em;
+
+    text-color: @fonte-sem-destaque; // COR DA PALAVRA QUE POR NO ABRIR
+}
+
+#element {
+	padding:  10px 1.5em 10px 14px;
+
+    
+}
+
+#element.selected.normal {
+    text-color:       @fonte-em-destaque;
+}
+
+#element.normal.normal {
+    text-color:       @fonte-sem-destaque;
+}
+
+#element.alternate.normal {
+    text-color:       @fonte-sem-destaque;
+}
+

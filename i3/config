@@ -1,65 +1,52 @@
- 
 #############################################################
 ############### M A I N #####################################
 #############################################################
+
+new_window pixel 3
 set $mod Mod4
-
-#hide_edge_borders both
-force_display_urgency_hint 0
-#workspace_auto_back_and_forth yes
-new_window pixel 5
-
-# smart|urgent|focus|none
-#focus_on_window_activation focus
-#focus_follows_mouse no
-
-#font pango:Source Code Pro, icomoon, Material Icons, FontAwesome 10
 font pango:Source Code Pro 10
+focus_on_window_activation focus
 
 #############################################################
 ############### C O L O R S #################################
 #############################################################
-set_from_resource $fg i3wm.foreground #D8DEE9
-set_from_resource $bg i3wm.background #587A89
+set_from_resource $ba i3wm.foco		    #FFD75F
+set_from_resource $bi i3wm.sem-foco     #D7FF87
 
-set $default_gaps_inner 8
-set $default_gaps_outer 0
-gaps inner $default_gaps_inner
-gaps outer $default_gaps_outer
-
-
+#laranja = #FFD75F
+#azul-claro = #5FD7FF
+#azul-visudo = #AFD7FF
+#amarelo-verde = #D7FF87
+#roxo = #875FAF
+#cinza = #FFD75F
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $bg     $bg     $fg  $bg       $bg
-client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.focused          $bg     $bg     $fg  $ba       $ba
+client.focused_inactive $bg     $bg     $fg  $bi       $bi
+client.unfocused        $bg     $bg     $fg  $bi       $bi
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 client.background       $bg
 
-floating_modifier $mod
 
 #############################################################
 ############### B I N D I N G S #############################
 #############################################################
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
-bindsym $mod+Shift+q kill
+#Usa o Mouse + Tecla Super para Mover as Janelas em Float
+floating_modifier $mod
+
+# Fecha a Janela
 bindsym $mod+q kill
 
-# Rofi
-bindsym $mod+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/dark.rasi -dmenu -p "Google: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} $BROWSER https://www.google.com.br/search?q={}
-#bindsym $mod+Shift+g exec --no-startup-id echo "" | rofi -theme ~/.local/share/rofi/themes/dark.rasi -dmenu -p "DuckDuckGo: " -bw 0 -lines 1 -separator-style none -location 0 -width 250 -hide-scrollbar -padding 5 | xargs -I{} $BROWSER https://duckduckgo.com/?q={}
+# Inicia o Terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
-bindsym $mod+Shift+w exec --no-startup-id ~/.config/rofi/scripts/janelas
+
+# Rofi
 bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/drun
 bindsym Mod1+F2 exec --no-startup-id ~/.config/rofi/scripts/run
-bindsym $mod+c exec --no-startup-id ~/.config/rofi/scripts/configs
-bindsym $mod+a exec --no-startup-id ~/.config/rofi/scripts/apps
-bindsym $mod+Shift+e exec --no-startup-id ~/.config/rofi/scripts/power
 
-#bindsym $mod+Shift+x exec i3lock-fancy -f "Iosevka-Thin" -t "Arch Linux" -p -g -- scrot -z | amixer -q -D pulse sset Master mute
-bindsym $mod+Shift+x exec ~/.local/bin/lockscreen
 
 # Media Hotkeys
 bindsym XF86AudioPlay exec --no-startup-id mpc toggle
@@ -69,12 +56,9 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master 1+ tog
 bindsym $mod+Mod1+Left exec --no-startup-id mpc prev
 bindsym $mod+Mod1+Right exec --no-startup-id mpc next
 
-#bindsym Print exec --no-startup-id ~/bin/screenshot.sh
-bindsym Print exec --no-startup-id ~/.config/rofi/scripts/screenshot
-bindsym Control+Print exec --no-startup-id ~/bin/screenshot.sh -w
-bindsym --release Mod1+Sys_Req exec --no-startup-id ~/bin/screenshot.sh -s
-bindsym $mod+Print exec --no-startup-id ~/bin/screenshot.sh -d
-bindsym $mod+Shift+Print exec --no-startup-id ~/bin/screenshot.sh -g
+# Screenshot
+bindsym Print exec --no-startup-id $HOME/.local/bin/screenshot
+
 
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -118,28 +102,22 @@ bindsym $mod+Shift+d focus child
 #############################################################
 ############### W O R K S P A C E S #########################
 #############################################################
-set $workspace1 "1:"
-set $workspace2 "2:"
-set $workspace3 "3:"
-set $workspace4 "4:"
-set $workspace5 "5:"
-set $workspace6 "6:"
-set $workspace7 "7:"
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+set $workspace6 "6:"
+set $workspace7 "7:"
 set $workspace8 "8:"
-set $workspace9 "9:"
-set $workspace10 "10:"
+set $workspace9 "9:"
+set $workspace10 "10:"
 
 
-#workspace $workspace1 gaps inner 0
-#workspace $workspace1 gaps outer 0
-#workspace $workspace2 gaps inner 0
-#workspace $workspace2 gaps outer 0
-#workspace $workspace3 gaps inner 0
-#workspace $workspace3 gaps outer 0
 
 # Alt+TAB & Alt+Shift+TAB	
 bindsym Mod1+Tab workspace next
-bindsym Mod1+Shift+Tab workspace prev
+bindsym Mod+Tab workspace prev
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -189,57 +167,50 @@ for_window [window_role="Preferences"] floating enable, move position center
 for_window [window_type="dialog"] floating enable, move position center
 for_window [window_type="menu"] floating enable, move position center
 
-for_window [class="(Mate-font-viewer|mpv|Catfish|Engrampa|File-roller|Notes|Agave|Viewnior|Pavucontrol|Galculator|YAD)"] floating enable, move position center
-for_window [class="Lxtask" title="Gerenciador de tarefas"] floating enable, resize set 800 px 600 px, move position center
+for_window [class="Engrampa|File-roller|Notes||Pavucontrol|Galculator|Kcalc)"] floating enable, move position center
 for_window [class="^VirtualBox" title="*Executando*"] floating enable
-for_window [title="(Biblioteca|Library|About|Amigos|Steam|Sobre o Mozilla Firefox|VideoCut|dagor2)"] floating enable, move position center
-for_window [title="(screencast$|^DownThemAll|DownThemAll!$)"] move window to scratchpad
+for_window [title="(Deezer)"] floating enable, move position center
 
-assign [class="^(qutebrowser|Epiphany|Chromium|Firefox|firefox-developer)"] $workspace1
-assign [class="(^Code*|Pluma|Sublime_text|Atom|nvim|vim|Geany)"] $workspace2
-assign [class="(^Telegram|Whatsie|Whatsapp|whatsapp-desktop)"] $workspace3
-assign [class="(Termite|Tilix|konsole|xfce4-terminal|sakura)"] $workspace4
-assign [class="^(Thunar|Pcmanfm|Dolphin)"] $workspace5
-assign [class="(^vlc|stremio-bin)"] $workspace6
-assign [class="(Gtkman|MedleyText)"] $workspace7
-assign [class="(Lxappearance|^Pamac*|Notes|Lxtask|^Mate-disk-usage-analyzer)"] $workspace8
-assign [class="(dontstarve_steam)"] $workspace10
-#assign [title="War Thunder"] $workspace10
+assign [class="^(Chromium|Firefox|firefox-developer)"] $workspace1
+assign [class="(^Deezer)"] $workspace9
+assign [class="(^Telegram)"] $workspace2
+assign [class="^(Thunar|Pcmanfm|Dolphin)"] $workspace4
+assign [class="(^vlc|stremio-bin)"] $workspace5
+assign [class="(Lxappearance|^Pamac*|Notes|Lxtask|^Mate-disk-usage-analyzer|nitrogen)"] $workspace8
+
 
 
 #############################################################
 ############### G R O U P S #################################
 #############################################################
-mode "[s]air, [d]esligar, [r]einiciar, [s]uspender" {
-	bindsym s exec i3-msg exit
-	bindsym d exec systemctl poweroff
-	bindsym r exec systemctl reboot
-	bindsym s exec systemctl suspend
 
-	bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+Mod1+e mode "[s]air, [d]esligar, [r]einiciar, [s]uspender"
-
-mode "resize" {
+mode "Redimensionar" {
         bindsym j resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink hesight 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
+        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
+        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "Redimensionar"
 
 #############################################################
 ############### G A P S #####################################
 #############################################################
+set $default_gaps_inner 6
+set $default_gaps_outer 0
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
 set $mode_gaps gaps
 set $mode_gaps_outer outer gaps
 set $mode_gaps_inner inner gaps
@@ -286,12 +257,16 @@ mode "$mode_gaps_outer" {
     bindsym Escape mode "default"
 }
 
+
 #############################################################
 ############### I N I T #####################################
 #############################################################
 set $polybar ~/.config/polybar/launch.sh
 exec_always --no-startup-id $polybar
+
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id compton &
 exec_always --no-startup-id numlockx on
 exec_always --no-startup-id zsh -c 'xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1'
+exec_always --no-startup-id zsh -c 'g610-led -fx color keys ff0000 '
+exec_always --no-startup-id zsh -c 'setxkbmap -model pc105 -layout "us_intl, br" -option "grp:alt_shift_toggle"'

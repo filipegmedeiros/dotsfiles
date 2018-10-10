@@ -1,0 +1,37 @@
+{
+    "background-color": "#272822",
+    "badge-color": "#FFFFFF",
+    "bold-color": "#FFFFFF",
+    "comment": "",
+    "cursor-background-color": "#aaaaaa",
+    "cursor-foreground-color": "#FFFFFF",
+    "foreground-color": "#babdb6",
+    "highlight-background-color": "#000000",
+    "highlight-foreground-color": "#FFFFFF",
+    "name": "CustoAm",
+
+    "palette": [
+     "#242424", 
+     "#e73c50", 
+     "#57c8ee", 
+     "#cae682", 
+     "#cae682", 
+     "#75507b", 
+     "#191919", 
+     "#d3d7cf", 
+     "#555753", 
+     "#e73c50", 
+     "#8ae234", 
+     "#e73c50", 
+     "#729fcf", 
+     "#ad7fa8", 
+     "#8885b2", 
+     "#eeeeec"
+
+    ],
+    "use-badge-color": false,
+    "use-bold-color": false,
+    "use-cursor-color": false,
+    "use-highlight-color": false,
+    "use-theme-colors": false
+}
