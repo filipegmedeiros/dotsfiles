@@ -1,6 +1,6 @@
 # This requires spinner to be available (you can adjust the path).
 # That can be downloaded from here: http://github.com/swelljoe/spinner
-. ./Colorizacao.sh
+. ./dep2.sh
 
 
 
@@ -31,7 +31,7 @@ else
         NORMAL=''
 fi
 
-RUN_LOG="erros.log"
+RUN_LOG="saida.log"
 
 # Check for unicode support in the shell
 # This is a weird function, but seems to work. Checks to see if a unicode char can be
