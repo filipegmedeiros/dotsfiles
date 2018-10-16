@@ -49,12 +49,12 @@ bindsym Mod1+F2 exec --no-startup-id ~/.config/rofi/scripts/run
 
 
 # Media Hotkeys
-bindsym XF86AudioPlay exec --no-startup-id mpc toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master 1+ toggle
-bindsym $mod+Mod1+Left exec --no-startup-id mpc prev
-bindsym $mod+Mod1+Right exec --no-startup-id mpc next
+#bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ unmute
+#bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- unmute
+#bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master 1+ toggle
+#bindsym $mod+Mod1+Left exec --no-startup-id mpc prev
+#bindsym $mod+Mod1+Right exec --no-startup-id mpc next
 
 # Screenshot
 bindsym Print exec --no-startup-id $HOME/.local/bin/screenshot

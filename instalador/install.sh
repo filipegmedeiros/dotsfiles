@@ -217,7 +217,7 @@ echo -e "${BGVERMELHO}${FGPRETO}　 　Deletando as Pastas das configs  　 　�
 echo -e "${FGVERMELHO}-----------------------------------------------${FIM_DA_COR}"
 
 for PASTAS in ${PASTAS_DE_CONFIGURACOES[@]}; do
-    run_ok "rm -rf $HOME/.config/${CONFIGS}" " -► Deletando a configuração da ${PASTAS}";
+    run_ok "echo $HOME/.config/${CONFIGS}" " -► Deletando a configuração da ${PASTAS}";
 done
 echo -e "\n"
 

@@ -1,134 +1,86 @@
 [global]
+
     monitor = 0
     follow = mouse
 
-    # i3
-	geometry = "250x5-11-37"
+#########################
+# I3
+#########################
 
-
-    indicate_hidden = yes
-    shrink = no
-    transparency = 50
-    notification_height = 20
-    separator_height = 2
+    geometry = "250x5-11-37" 
     padding = 8
     horizontal_padding = 8
-    frame_width = 2
-    #frame_color = "#191919"
-    #separator_color = "#191919"
-    sort = yes
-    #idle_threshold = 120
-    idle_threshold = 0
+    separator_height = 2
 
-    ### Text ###
+#########################
+# TEXTO
+#########################
 
-    font = Anonymous Pro 9
+    font = Anonymous Pro 11
     line_height = 0
-    markup = full
-
-    # The format of the message.  Possible variables are:
-    #   %a  appname
-    #   %s  summary
-    #   %b  body
-    #   %i  iconname (including its path)
-    #   %I  iconname (without its path)
-    #   %p  progress value if set ([  0%] to [100%]) or nothing
-    #   %n  progress value if set without any extra characters
-    # Markup is allowed
-    format = "%i <b>%s</b>\n%b"
-
-    # Alignment of message text.
-    # Possible values are "left", "center" and "right".
     alignment = center
 
-    # Show age of message if message is older than show_age_threshold
-    # seconds.
-    # Set to -1 to disable.
+    markup = full
+    format = "<b>%s</b>\n%b"
+
+    sort = yes
+    indicate_hidden = yes
+
+    bounce_freq = 0
     show_age_threshold = 60
-
-    # Split notifications into multiple lines if they don't fit into
-    # geometry.
     word_wrap = yes
-
-    # Ignore newlines '\n' in notifications.
     ignore_newline = no
 
-    # Merge multiple notifications with the same content
-    stack_duplicates = true
+    transparency = 0
+    idle_threshold = 120
 
-    # Hide the count of merged notifications with the same content
-    hide_duplicate_count = true
-
-    # Display indicators for URLs (U) and actions (A).
-    show_indicators = yes
-
-    ### Icons ###
-    # Align icons left/right/off
-    icon_position = left
-
-    # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 32
-
-    # Paths to default icons.
-    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-
-    ### History ###
-
-    # Should a notification popped up from history be sticky or timeout
     sticky_history = yes
 
-    # Maximum amount of notifications kept in history
-    history_length = 100
 
-    ### Misc/Advanced ###
+    separator_color = "#EC00FF"
+    startup_notification = false
+
+#########################
+# ICONES
+#########################
+
+    icon_position = left
+    icon_path = /usr/share/icons/Paper/16x16/status/
+
+
+#########################
+# MISC ADVANCED
+#########################
 
     # dmenu path.
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/firefox-developer -new-tab
+    browser = /usr/bin/firefox -new-tab
 
-    # Always run rule-defined scripts, even if the notification is suppressed
-    always_run_script = true
 
-    # Define the title of the windows spawned by dunst
-    title = Dunst
-
-    # Define the class of the windows spawned by dunst
-    class = Dunst
-
-    # Print a notification on startup.
-    startup_notification = false
-
-    ### Legacy
-    force_xinerama = false
-
-[experimental]
-    per_monitor_dpi = false
+    frame_width = 2
 
 [shortcuts]
     close = ctrl+space
     close_all = ctrl+shift+space
     history = ctrl+period
-    #context = ctrl+shift+period
+    context = ctrl+shift+period
 
 [urgency_low]
     background = "#191919"
-    foreground = "#888888"
-    timeout = 8
-    #icon = /path/to/icon
+    frame_color = "#875FAF"
+    foreground = "#B3B3B3"
+    timeout = 5
 
 [urgency_normal]
-	background = "#191919"
-    foreground = "#ffffff"
+    background = "#191919"
+    frame_color = "#FFD75F"
+    foreground = "#B3B3B3"
     timeout = 10
-    #icon = /path/to/icon
 
 [urgency_critical]
     background = "#191919"
-    foreground = "#ffffff"
-    frame_color = "#ff0000"
+    foreground = "#E73C50"
+    frame_color = "#E73C50"
     timeout = 30
-    #icon = /path/to/icon
-
-
