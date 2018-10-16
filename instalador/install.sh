@@ -45,8 +45,8 @@ else
     if [[ -z $confirmacao1 ]] || [[ $confirmacao1 != [sSyY]* ]]; then
 	    exit 0
     fi
-	curl -s https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/instalador/barra_de_progresso.sh 1> barra_de_progresso.sh
-	curl -s https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/instalador/Colorizacao.sh 1> Colorizacao.sh
+	curl -s https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/instalador/dep1.sh 1> dep1.sh
+	curl -s https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/instalador/dep2.sh 1> dep2.sh
     echo -e "\n"
     echo -e "${BGVERMELHO}${FGBRANCO}► Download Completo, Reinicie o Script ! ${FIM_DA_COR}" 
     echo -e "\n"
