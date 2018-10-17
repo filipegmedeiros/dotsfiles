@@ -60,28 +60,47 @@ fi
 # Programas
 ############################################
 
-OS_PROGRAMAS=(geany i3 powerline-fonts powerline mousepad )
 
-dOS_PROGRAMAS=( zsh zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel9k \
+OS_PROGRAMAS=( \
+adobe-source-code-pro-fonts alsa-utils arc-gtk-theme \
+compton \
 dunst \
-i3-gaps  \
-polybar powerline powerline-fonts ttf-anonymous-pro ttf-fira-sans \
-rofi \
-tilix )
-
-OS_PROGRAMAS_EXTRAS=( neofetch htop gufw net-tools openssh wget \
-xorg-xkill xdg-user-dirs\
-arc-gtk-theme papirus-icon-theme \
-thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman
-scrot qpdfview mousepad file-roller\
-firefox-i18n-pt-br vlc telegram-desktop \
-ntfs-3g \
-pulseaudio pulseaudio-alsa pavucontrol paprefs \
+git \
+numlockx nitrogen \
+powerline powerline-fonts \
+thunar thunar-archive-plugin thunar-media-tags-plugin thunar-volman tilix ttf-anonymous-pro \
+rofi scrot \
+xorg-server xorg-server-common  xorg-server-xephyr xorg-xbacklight xf86-input-evdev \
+xorg-xev xorg-xinit xorg-xinput \
+zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel9k\
 )
+
+OS_PROGRAMAS_AUR=( xaxa light oh-my-zsh-git polybar )
+
+
+
+OS_PROGRAMAS_EXTRAS=( \
+arandr arduino \
+dosfstools dialog \
+engrampa \
+firefox-i18n-pt-br \
+gcolor2 gimp gufw gvfs-gphoto2 gvfs-mtp \
+htop \
+imagemagick i2c-tools \
+lxappearance-gtk3 \
+mousepad mate-calc \
+ntfs-3g neofetch networkmanager network-manager-applet \
+papirus-icon-theme p7zip paprefs pavucontrol pulseaudio pulseaudio-alsa pulseaudio-equalizer \
+qpdfview \
+telegram-desktop \
+unrar \
+vlc \
+w3m wget wireless_tools wpa_supplicant \
+xdg-user-dirs xdotool xorg-xkill net-tools )
 
 PASTAS_DE_CONFIGURACOES=(dunst fontes i3 polybar rofi tilix vim zsh)
 
-ARQUIVOS_DE_CONFIGURACOES=(vimrc zshrc)
+ARQUIVOS_DE_CONFIGURACOES=(.vimrc .zshrc)
 
 ############################################
 # Declarações Iniciais
@@ -144,6 +163,21 @@ echo -e "\n"
 
 
 ############################################
+# Instalando o Yay
+############################################
+
+	if ! pacman -Qqm yay &> /dev/null; then 
+	    echo -e "${FGVERMELHO}----------------------------------------------- ${FIM_DA_COR}"
+	    echo -e "${BGVERMELHO}${FGPRETO}　　　    　Instalando o helper Yay　        　${FIM_DA_COR}" 
+	    echo -e "${FGVERMELHO}-----------------------------------------------${FIM_DA_COR}"
+        #git clone https://aur.archlinux.org/yay.git && cd yay
+	    run_ok "echo" " -► Instalando o Helper: Yay ";
+	    #cd ..
+        echo -e "\n"
+        sleep 1
+	fi
+
+############################################
 # Instalando os Programas EXTRAS
 ############################################
 
@@ -152,7 +186,11 @@ echo -e "${BGROXO}${FGPRETO} 　 　　Você Deseja Instalar os Extras?      　
 echo -e "${FGROXO}-----------------------------------------------${FIM_DA_COR}"
 
 for PROGRAMAS_EXTRAS in ${OS_PROGRAMAS_EXTRAS[@]}; do
-	echo -e "${FGVERMELHO} -► ${FIM_DA_COR} ${FGCINZA} ${PROGRAMAS_EXTRAS}"
+	pacman -Q $PROGRAMAS_EXTRAS 1> /dev/null 2> /dev/null
+
+	if [ $? = 1 ]; then
+        echo -e "${FGVERMELHO} -► ${FIM_DA_COR} ${FGCINZA} ${PROGRAMAS_EXTRAS}"
+	fi
 done
 
 echo -e "\n"
@@ -162,16 +200,16 @@ echo -e "${FGROXO}----------------------------------------------- ${FIM_DA_COR}"
 echo -e "\n"
 
 if [[ -z $confirmacao2 ]] || [[ $confirmacao2 == [sSyY]* ]]; then
-	echo -e "${FGVERMELHO}----------------------------------------------- ${FIM_DA_COR}"
-	echo -e "${BGVERMELHO}${FGPRETO}　 　Instalando os Programas Extras　        　${FIM_DA_COR}" 
-	echo -e "${FGVERMELHO}-----------------------------------------------${FIM_DA_COR}"
+	echo -e "${FGROXO}----------------------------------------------- ${FIM_DA_COR}"
+	echo -e "${BGROXO}${FGPRETO}　 　Instalando os Programas Extras　        　${FIM_DA_COR}" 
+	echo -e "${FGROXO}-----------------------------------------------${FIM_DA_COR}"
 
 	for PROGRAMAS_EXTRAS in ${OS_PROGRAMAS_EXTRAS[@]}; do
-		run_ok "echo -e ${PROGRAMAS_EXTRAS} " " -► Instalando o Programa: ${PROGRAMAS_EXTRAS} ";
+        pacman -Q $PROGRAMAS_EXTRAS 1> /dev/null 2> /dev/null
+	    if [ $? = 1 ]; then
+		    run_ok "echo -e ${PROGRAMAS_EXTRAS} " " -► Instalando o Programa: ${PROGRAMAS_EXTRAS}";
+	    fi
 	done
-
-	echo -e "\n\n"
-
 fi
 
 echo -e "\n"
@@ -185,23 +223,24 @@ echo -e "${FGAZUL_CLARO}----------------------------------------------- ${FIM_DA
 echo -e "${BGAZUL_CLARO}${FGPRETO}　Instalando os Programas e suas Dependências　${FIM_DA_COR}" 
 echo -e "${FGAZUL_CLARO}-----------------------------------------------${FIM_DA_COR}"
 
+
+
 for PROGRAMAS in ${OS_PROGRAMAS[@]}; do
 	pacman -Q $PROGRAMAS 1> /dev/null 2> /dev/null
 
 	if [ $? = 1 ]; then
         run_ok "echo -e ${PROGRAMAS} " " -► Instalando o Programa: ${PROGRAMAS} ";
-		app_ok=0
 	fi
 done
 
-	pacman -Q yay 1> /dev/null 2> /dev/null
+for PROGRAMAS_AUR in ${OS_PROGRAMAS_AUR[@]}; do
+	pacman -Qm $PROGRAMAS_AUR 1> /dev/null 2> /dev/null
 
 	if [ $? = 1 ]; then
-        git clone https://aur.archlinux.org/yay.git && cd yay
-	run_ok "makepkg -fsri" " -► Instalando o Helper: Yay ";
-	cd ..
-		app_ok=0
+        run_ok "echo -e ${PROGRAMAS_AUR} " " -► Instalando o Programa do aur: ${PROGRAMAS_AUR} ";
 	fi
+done
+
 
 echo -e "\n"
 sleep 1
@@ -217,8 +256,9 @@ echo -e "${BGVERMELHO}${FGPRETO}　 　Deletando as Pastas das configs  　 　�
 echo -e "${FGVERMELHO}-----------------------------------------------${FIM_DA_COR}"
 
 for PASTAS in ${PASTAS_DE_CONFIGURACOES[@]}; do
-    run_ok "echo $HOME/.config/${CONFIGS}" " -► Deletando a configuração da ${PASTAS}";
+    run_ok "echo -e $HOME/.config/${PASTAS}" " -► Deletando a pasta ${PASTAS} de $HOME/.config/${PASTAS}";
 done
+
 echo -e "\n"
 
 echo -e "${FGVERMELHO}----------------------------------------------- ${FIM_DA_COR}"
@@ -226,7 +266,7 @@ echo -e "${BGVERMELHO}${FGPRETO}　　 　 　Deletando as configs rc  　 　 �
 echo -e "${FGVERMELHO}-----------------------------------------------${FIM_DA_COR}"
 
 for ARQUIVOS in ${ARQUIVOS_DE_CONFIGURACOES[@]}; do
-    run_ok "echo -e  $HOME/.config/${CONFIGS}" " -► Deletando a configuração da ${ARQUIVOS}";
+    run_ok "echo -e  $HOME/.config/${ARQUIVOS}" " -► Deletando o arquivo ${ARQUIVOS} de $HOME/${ARQUIVOS}";
 done
 
 echo -e "\n"
@@ -247,9 +287,11 @@ for PASTAS in ${PASTAS_DE_CONFIGURACOES[@]}; do
 
 done
 
-#for ARQUIVOS in ${ARQUIVOS_DE_CONFIGURACOES[@]}; do
-#    run_ok "cp -r ../${PASTAS}/${ARQUIVOS}" " -► Movendo o arquivo ${ARQUIVOS} para $HOME/.config/${PASTAS}";
-#done
+echo -e "\n"
+
+for ARQUIVOS in ${ARQUIVOS_DE_CONFIGURACOES[@]}; do
+    run_ok "echo -e ../${PASTAS}/${ARQUIVOS}" " -► Movendo o arquivo ${ARQUIVOS} para $HOME/${ARQUIVOS}";
+done
 
 echo -e "\n"
 
@@ -258,10 +300,10 @@ echo -e "\n"
 ############################################
 
 echo -e "${FGAZUL_CLARO}----------------------------------------------- ${FIM_DA_COR}"
-echo -e "${BGAZUL_CLARO}${FGPRETO}　 　  　　Instalando as Configs    　 　　　　${FIM_DA_COR}" 
+echo -e "${BGAZUL_CLARO}${FGPRETO}　 　  　　Atualizando as Fontes    　 　　　　${FIM_DA_COR}" 
 echo -e "${FGAZUL_CLARO}-----------------------------------------------${FIM_DA_COR}"
 
-run_ok "echo -e 'oi'" "  ► ► ► Atualizando as Fontes";
+run_ok "echo -e" "  ► ► ► Atualizando as Fontes";
 
 echo -e "\n"
 
