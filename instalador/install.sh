@@ -75,7 +75,7 @@ xorg-xev xorg-xinit xorg-xinput \
 zsh zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting zsh-theme-powerlevel9k\
 )
 
-OS_PROGRAMAS_AUR=( xaxa light oh-my-zsh-git polybar )
+OS_PROGRAMAS_AUR=( light oh-my-zsh-git polybar )
 
 
 
@@ -252,7 +252,7 @@ sleep 1
 
 
 echo -e "${FGVERMELHO}----------------------------------------------- ${FIM_DA_COR}"
-echo -e "${BGVERMELHO}${FGPRETO}　 　Deletando as Pastas das configs  　 　　　${FIM_DA_COR}" 
+echo -e "${BGVERMELHO}${FGPRETO}　　 　　Deletando as configs antigas 　 　　　${FIM_DA_COR}" 
 echo -e "${FGVERMELHO}-----------------------------------------------${FIM_DA_COR}"
 
 for PASTAS in ${PASTAS_DE_CONFIGURACOES[@]}; do
@@ -260,10 +260,6 @@ for PASTAS in ${PASTAS_DE_CONFIGURACOES[@]}; do
 done
 
 echo -e "\n"
-
-echo -e "${FGVERMELHO}----------------------------------------------- ${FIM_DA_COR}"
-echo -e "${BGVERMELHO}${FGPRETO}　　 　 　Deletando as configs rc  　 　 　　　${FIM_DA_COR}" 
-echo -e "${FGVERMELHO}-----------------------------------------------${FIM_DA_COR}"
 
 for ARQUIVOS in ${ARQUIVOS_DE_CONFIGURACOES[@]}; do
     run_ok "echo -e  $HOME/.config/${ARQUIVOS}" " -► Deletando o arquivo ${ARQUIVOS} de $HOME/${ARQUIVOS}";
@@ -307,21 +303,52 @@ run_ok "echo -e" "  ► ► ► Atualizando as Fontes";
 
 echo -e "\n"
 
+
+
+############################################
+# Mensagem de Finalização em Arco Iris
+############################################
+
+Incremento_Colorir=0
+Cores_do_Arco_Iris=( 196 208 226 118 46 48 51 33 21 93 201 198 )
+num_de_Cores=${#Cores_do_Arco_Iris[@]}
+Texto_Parcial2="--------------------------------------------------------"
+Texto_Parcial="SCRIPT FINALIZADO, POR FAVOR, SE GOSTOU, STAR NO REPO ♥ "
+
+		for (( i=0 ; i < ${#Texto_Parcial2} ; i++ )) do
+			Codigo_da_Cor=${Cores_do_Arco_Iris[$Incremento_Colorir]}
+			Incremento_Colorir=$(($Incremento_Colorir +1))
+			Incremento_Colorir=$(($Incremento_Colorir % $num_de_Cores))
+            character2=${Texto_Parcial2:i:1}
+			printf "\033[38;5;${Codigo_da_Cor}m${character2}\033[0m"
+		done
+        printf "\n"
+		for (( i=0 ; i < ${#Texto_Parcial} ; i++ )) do
+			Codigo_da_Cor=${Cores_do_Arco_Iris[$Incremento_Colorir]}
+			Incremento_Colorir=$(($Incremento_Colorir +1))
+			Incremento_Colorir=$(($Incremento_Colorir % $num_de_Cores))
+			character=${Texto_Parcial:i:1}
+			printf "\033[38;5;${Codigo_da_Cor}m${character}\033[0m"
+		done
+        printf "\n"
+		for (( i=0 ; i < ${#Texto_Parcial2} ; i++ )) do
+			Codigo_da_Cor=${Cores_do_Arco_Iris[$Incremento_Colorir]}
+			Incremento_Colorir=$(($Incremento_Colorir +1))
+			Incremento_Colorir=$(($Incremento_Colorir % $num_de_Cores))
+            character2=${Texto_Parcial2:i:1}
+			printf "\033[38;5;${Codigo_da_Cor}m${character2}\033[0m"
+		done
+            echo -e "\n"
+
 ############################################
 # Reiniciando o I3-GAPS
 ############################################
-
-echo -e "\n\n"
-echo -e "${FGROXO}-----------------------------------------------${FIM_DA_COR}"
-echo -e "${BGROXO}${FGPRETO}　　 　　 　Reiniciando o i3-gaps　 　　　 　　${FIM_DA_COR}" 
-echo -e "${FGROXO}-----------------------------------------------${FIM_DA_COR}"
-echo -e "\n"
 
 ############################################
 # Deletando a Pasta do Dotfiles
 ############################################
 
 
-echo -e "\n\n"
+
 #Fim
 exit
