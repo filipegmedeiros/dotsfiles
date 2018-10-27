@@ -85,7 +85,7 @@ font-2 = Wuncon Siji:pixelsize=11;2
 
 modules-left = launch i3
 modules-center =  window
-modules-right = keyboard clock calendar volume  memory battery wifi powermenu
+modules-right = keyboard clock calendar luz volume  memory battery wifi powermenu
 
 
 
@@ -273,6 +273,23 @@ format-prefix-foreground = ${colors.destaque}
 
 label = %output%%
 format-padding = 
+
+;----------------------------------------------------------
+; M08		        B A C K  L I G H T    H D M I
+;----------------------------------------------------------
+[module/luz]
+
+type = custom/script
+interval = 1
+
+format-prefix = " "
+
+format-prefix-foreground = ${colors.destaque}
+exec = ~/.config/polybar/scripts/luz.sh
+
+scroll-up = ~/.config/polybar/scripts/luz.sh -i
+scroll-down = ~/.config/polybar/scripts/luz.sh -w
+
 
 ;----------------------------------------------------------
 ;   M09 		        M E M O R Y

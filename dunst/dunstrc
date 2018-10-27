@@ -46,7 +46,7 @@
 
     icon_position = left
     icon_path = /usr/share/icons/Paper/16x16/status/
-
+    max_icon_size = 32 
 
 #########################
 # MISC ADVANCED
