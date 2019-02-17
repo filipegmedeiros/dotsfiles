@@ -4,17 +4,16 @@
 
 [colors]
 
-transparente = #A6000000
+transparente = #000000
 background = #191919
 
-primeiro-plano = #D7FF87
-destaque = #FFD75F
+primeiro-plano = #003259
+destaque = #1076C5
 
-;primeiro-plano = #466700
-;destaque = #D7FF87
+
 
 letras = #B3B3B3
-letras-dentro = #000
+letras-dentro = #FFFFFF
 
 alerta = #FFD75F
 
