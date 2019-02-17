@@ -52,8 +52,8 @@
 ---------------------------------------------------------------------------------------------------------------------------------
 
 
- ## Foto  do dia 10/10/18
+ ## Foto  do dia 17/02/19
 <p align="center">
-  <img src="https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/imgs/v2-0)09-10-18.png" >
+  <img src="https://raw.githubusercontent.com/filipegmedeiros/dotsfiles/master/imgs/v2-1)17-08-19.png" >
 </p>
 
