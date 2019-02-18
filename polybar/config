@@ -1,395 +1,271 @@
-;----------------------------------------------------------
-;		       C O R E S 
-;----------------------------------------------------------
+#############################################################
+############### M A I N #####################################
+#############################################################
 
-[colors]
+new_window pixel 3
+set $mod Mod4
+font pango:Source Code Pro 10
+focus_on_window_activation focus
+
+#############################################################
+############### C O L O R S #################################
+#############################################################
+set_from_resource $ba i3wm.foco		    #1076C5
+set_from_resource $bi i3wm.sem-foco     #003259
+#laranja = #FFD75F
+#azul-claro = #5FD7FF
+#azul-visudo = #AFD7FF
+#amarelo-verde = #D7FF87
+#roxo = #875FAF
+#cinza = #FFD75F
 
-transparente = #000000
-background = #191919
-
-primeiro-plano = #003259
-destaque = #1076C5
-
-
-
-letras = #B3B3B3
-letras-dentro = #FFFFFF
-
-alerta = #003259
-
-laranja = #FFD75F
-azul-claro = #5FD7FF
-azul-visudo = #AFD7FF
-amarelo-verde = #D7FF87
-roxo = #875FAF
-cinza = #FFD75F
-
-
-;----------------------------------------------------------
-;		        B A R / NOTEBOOK 
-;----------------------------------------------------------
-[settings]
-screenchange-reload = true
-
-[bar/notebook]
-monitor = ${env:MONITOR:LVDS-1}
-width = 100%
-height = 30
-offset-y = -1
-top = true
-;override-redirect = true
-
-background = ${colors.background}
-foreground = ${colors.letras}
-fixed-center = true
-
-module-margin-right = 2
-
-font-0 = Fira:size=10;3
-font-1 = feather:pixelsize=11;3
-font-2 = Fira:size=8;1
-
-modules-left = launch i3
-modules-center =  window
-modules-right = keyboard clock calendar volume backlight battery wifi  powermenu
-
-;----------------------------------------------------------
-;		        B A R / HDMI / MONITOR
-;----------------------------------------------------------
-[bar/monitor]
-monitor = ${env:MONITOR:HDMI-1}
-width = 100%
-height = 30
-offset-y = -1
-top = true
-;override-redirect = true
-
-background = ${colors.transparente}
-primeiro-plano = ${colors.primeiro-plano}
-fixed-center = true
-overline-size = 2
-overline-color = #bc92f8
-underline-size = 2
-underline-color = #bc92f8
-
-module-margin-left = 0
-module-margin-right = 2
-
-font-0 = Fira:size=10;2
-font-1 = feather:pixelsize=11;2
-;font-2 = feather:pixelsize=14;2
-font-2 = Wuncon Siji:pixelsize=11;2
-
-
-
-modules-left = launch i3
-modules-center =  window
-modules-right = keyboard clock calendar luz volume  memory battery wifi powermenu
-
-
-
-;----------------------------------------------------------
-;	 M01		L A U N C H E R
-;----------------------------------------------------------
-[module/launch]
-type = custom/text
-content = ""
-content-padding = 1
-content-background = ${colors.primeiro-plano}
-content-foreground = ${colors.letras-dentro}
-click-left = ~/.config/rofi/scripts/drun &
-click-middle = ~/.config/rofi/scripts/run &
-click-right = ~/.config/rofi/scripts/drun &
-
-
-
-;----------------------------------------------------------
-;   M02		        I 3
-;----------------------------------------------------------
-[module/i3]
-type = internal/i3
-
-; Precisa seguir a Sequencia do i3 config
-
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
-ws-icon-6 = 7;
-ws-icon-7 = 8;
-ws-icon-8 = 9;
-ws-icon-9 = 10;
-
-
-
-strip-wsnumbers = true
-
-format = <label-state> <label-mode>
-format-spacing = 0
-label-font = 5
-
-
-label-focused-font = 5
-label-focused =  %name%
-label-focused-padding = 4
-label-focused-foreground = ${colors.destaque}
-
-label-unfocused-font = 5
-label-unfocused = %name%
-label-unfocused-padding = 4
-label-unfocused-foreground = ${colors.letras}
-
-label-urgent-font = 5
-label-urgent = %name%
-label-urgent-padding = 4
-label-urgent-foreground = ${colors.destaque}
-
-label-visible-font = 5
-label-visible = %name%
-label-visible-padding = 4
-
-;----------------------------------------------------------
-;  M03		        W I N D O W
-;----------------------------------------------------------
-[module/window]
-type = custom/script
-interval = 1
-format-prefix = " "
-format-prefix-foreground = ${colors.destaque}
-label = %output:0:40:...%
-click-left = ~/.config/polybar/scripts/janela.sh -i
-click-middle = ~/.config/polybar/scripts/janela.sh -c
-click-right = ~/.config/polybar/scripts/janela.sh -w
-exec = ~/.config/polybar/scripts/janela.sh
-
-;----------------------------------------------------------
-;	M04        T E C L A D O 
-;----------------------------------------------------------
-
-
-[module/keyboard]
-type = internal/xkeyboard
-
-
-blacklist-0 = num lock
-blacklist-1 = scroll lock
-blacklist-2 = caps lock
-
-format-prefix = ""
-format-prefix-foreground = ${colors.destaque}
-
-format = <label-layout> <label-indicator>
-format-spacing = 0
-
-label-layout =%layout%
-label-layout-padding = 2
-label-indicator-padding = 2
-label-underline = ${colors.destaque}
-label-indicator-background = #8139e8
-
-
-label-layout-foreground = #FFFFF
-
-; Available tokens:
-;   %name%
-; Default: %name%
-label-indicator = %name%
-;label-indicator-padding = 2
-;label-indicator-background = #8139e8
-
-label-layout-icon-default = some-icon-0
-label-layout-icon-0 = us;some-icon-1
-label-layout-icon-1 = br;some-icon-2
-
-;----------------------------------------------------------
-; M05			 C L O C K
-;----------------------------------------------------------
-
-[module/clock]
-type = custom/script
-interval = 1
-exec =  ~/.config/polybar/scripts/clock.sh 1
-click-left = ~/.config/rofi/scripts/alarme &
-label = %output%
-format = <label>
-format-prefix = "  "
-format-prefix-foreground = ${colors.destaque}
-
-
-;----------------------------------------------------------
-;  M06			 C A L E N D A R
-;----------------------------------------------------------
-[module/calendar]
-type = custom/script
-interval = 60.0
-exec =  ~/.config/polybar/scripts/calendar.sh short
-click-left = notify-send "Data" "$(date +"%A, %d de %B de %Y")" &
-click-right = gsimplecal &
-label = %output%
-format = <label>
-format-prefix = "  "
-format-prefix-foreground = ${colors.destaque}
-
-
-;----------------------------------------------------------
-;  M07		        V O L U M E
-;----------------------------------------------------------
-[module/volume]
-type = internal/alsa
-format-volume = <ramp-volume> <label-volume>
-;format-volume = <label-volume>
-
-ramp-volume-foreground = ${colors.destaque}
-
-label-volume = %percentage%%
-
-label-muted = " sem som"
-format-muted-foreground = ${colors.letras-dentro}
-format-muted-background = ${colors.primeiro-plano}
-format-volume-muted = <label-muted>
-format-muted-prefix-foreground = ${colors.destaque}
-ramp-volume-0 = 
-ramp-volume-1 =
-ramp-volume-2 =
-ramp-volume-3 =
-
-;----------------------------------------------------------
-; M08		        B A C K  L I G H T
-;----------------------------------------------------------
-
-[module/backlight]
-type = custom/script
-interval = 1
-exec = ~/.config/polybar/scripts/backlight.sh
-
-scroll-up = exec light -A 5
-scroll-down = exec light -U 5
-
-format-prefix = " "
-format-prefix-foreground = ${colors.destaque}
-
-label = %output%%
-format-padding = 
-
-;----------------------------------------------------------
-; M08		        B A C K  L I G H T    H D M I
-;----------------------------------------------------------
-[module/luz]
-
-type = custom/script
-interval = 1
-
-format-prefix = " "
-
-format-prefix-foreground = ${colors.destaque}
-exec = ~/.config/polybar/scripts/luz.sh
-
-scroll-up = ~/.config/polybar/scripts/luz.sh -i
-scroll-down = ~/.config/polybar/scripts/luz.sh -w
-
-
-;----------------------------------------------------------
-;   M09 		        M E M O R Y
-;----------------------------------------------------------
-[module/memory]
-type = custom/script
-interval = 1
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.destaque}
-label = %output:%%
-exec = ~/.config/polybar/scripts/mem.sh
-click-left = lxtask &
-
-;----------------------------------------------------------
-;  M10		        N E T W O R K
-;----------------------------------------------------------
-[module/wifi]
-type = custom/script
-interval = 1
-exec =  ~/.config/polybar/scripts/echo.sh 1
-label = %output%
-format = <label>
-format-prefix = " "
-format-prefix-foreground = ${colors.destaque}
-
-
-
-;----------------------------------------------------------
-;  M11			 B A T T E R Y
-;----------------------------------------------------------
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC0
-poll-interval = 5
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity>  <label-discharging> 
-time-format = %H:%M
-
-label-charging = %percentage%%
-label-discharging = %percentage%% %{F#1076C5}  %{F-} %time%h
-
-ramp-capacity-foreground = ${colors.destaque}
-ramp-capacity-0 =  
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-animation-charging-foreground = ${colors.destaque}
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-framerate = 750
-
-
-
-
-;----------------------------------------------------------
-;  M12		    P O W E R   M E N U
-;----------------------------------------------------------
-[module/powermenu]
-type = custom/menu
-format-spacing = 1
-expand-right = true
-
-label-open = ""
-label-open-padding = 1
-label-open-background = ${colors.primeiro-plano}
-label-close = ""
-label-close-foreground = ${colors.destaque}
-;label-separator = " "
-label-separator =" "
-label-open-foreground = ${colors.letras-dentro}
-
-menu-0-0 = "sair i3"
-menu-0-0-exec = menu-open-1
-
-menu-0-1 = "reiniciar"
-menu-0-1-exec = menu-open-2
-
-menu-0-2 = "desligar"
-menu-0-2-exec = menu-open-3
-
-
-
-menu-1-0 = " Realmente sair do I3? "
-menu-1-0-exec = i3-msg exit
-menu-1-0-background = ${colors.alerta}
-menu-1-0-foreground = ${colors.letras-dentro}
-
-menu-2-0 = " REINICIAR? "
-menu-2-0-background = ${colors.alerta}
-menu-2-0-foreground = ${colors.letras-dentro}
-menu-2-0-exec = systemctl reboot
-
-menu-3-0 = " DESLIGAR? "
-menu-3-0-background = ${colors.alerta}
-menu-3-0-foreground = ${colors.letras-dentro}
-menu-3-0-exec = systemctl poweroff
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $ba       $ba
+client.focused_inactive $bg     $bg     $fg  $bi       $bi
+client.unfocused        $bg     $bg     $fg  $bi       $bi
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+client.background       $bg
+
+
+#############################################################
+############### B I N D I N G S #############################
+#############################################################
+
+#Usa o Mouse + Tecla Super para Mover as Janelas em Float
+floating_modifier $mod
+
+# Fecha a Janela
+bindsym $mod+q kill
+
+# Inicia o Terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
+
+
+# Rofi
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/drun
+bindsym Mod1+F2 exec --no-startup-id ~/.config/rofi/scripts/run
+
+
+# Media Hotkeys
+bindsym XF86AudioPlay exec --no-startup-id mpc toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master 1+ toggle
+bindsym $mod+Mod1+Left exec --no-startup-id mpc prev
+bindsym $mod+Mod1+Right exec --no-startup-id mpc next
+
+# Screenshot
+bindsym Print exec --no-startup-id $HOME/.local/bin/screenshot
+
+
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+Shift+c move position center
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+Shift+s sticky toggle
+
+bindsym $mod+Shift+a focus parent
+bindsym $mod+Shift+d focus child
+
+#############################################################
+############### W O R K S P A C E S #########################
+#############################################################
+set $workspace1 "1:"
+set $workspace2 "2:"
+set $workspace3 "3:"
+set $workspace4 "4:"
+set $workspace5 "5:"
+set $workspace6 "6:"
+set $workspace7 "7:"
+set $workspace8 "8:"
+set $workspace9 "9:"
+set $workspace10 "10:"
+
+
+
+# Alt+TAB & Alt+Shift+TAB	
+bindsym Mod1+Tab workspace next
+bindsym Mod+Tab workspace prev
+
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+# move to workspaces
+bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Left workspace prev
+
+#bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+
+
+#############################################################
+############### R U L E S ###################################
+#############################################################
+for_window [urgent="latest"] focus
+
+for_window [window_role="pop-up"] floating enable, move position center
+for_window [window_role="bubble"] floating enable, move position center
+for_window [window_role="task_dialog"] floating enable, move position center
+for_window [window_role="Preferences"] floating enable, move position center
+for_window [window_type="dialog"] floating enable, move position center
+for_window [window_type="menu"] floating enable, move position center
+
+for_window [class="Engrampa|File-roller|Notes||Pavucontrol|Galculator|Kcalc)"] floating enable, move position center
+for_window [class="^VirtualBox" title="*Executando*"] floating enable
+for_window [title="(Deezer)"] floating enable, move position center
+
+assign [class="^(Chromium|Firefox|firefox-developer)"] $workspace1
+assign [class="(^Deezer)"] $workspace9
+assign [class="(^Telegram)"] $workspace2
+assign [class="^(Thunar|Pcmanfm|Dolphin)"] $workspace4
+assign [class="(^vlc|stremio-bin)"] $workspace5
+assign [class="(Lxappearance|^Pamac*|Notes|Lxtask|^Mate-disk-usage-analyzer|nitrogen)"] $workspace8
+
+
+
+#############################################################
+############### G R O U P S #################################
+#############################################################
+
+mode "Redimensionar" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "Redimensionar"
+
+#############################################################
+############### G A P S #####################################
+#############################################################
+set $default_gaps_inner 6
+set $default_gaps_outer 0
+gaps inner $default_gaps_inner
+gaps outer $default_gaps_outer
+
+set $mode_gaps gaps
+set $mode_gaps_outer outer gaps
+set $mode_gaps_inner inner gaps
+
+bindsym $mod+Shift+g mode "$mode_gaps"
+mode "$mode_gaps" {
+    bindsym o      mode "$mode_gaps_outer"
+    bindsym i      mode "$mode_gaps_inner"
+
+    bindsym 0      mode "default", exec --no-startup-id i3-msg "gaps inner current set 0" && i3-msg "gaps outer current set 0"
+    bindsym d      mode "default", exec --no-startup-id i3-msg "gaps inner current set $default_gaps_inner" && i3-msg "gaps outer current set $default_gaps_outer"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_inner" {
+    bindsym plus  gaps inner current plus 5
+    bindsym minus gaps inner current minus 5
+    bindsym 0     mode "default", gaps inner current set 0
+    bindsym d     mode "default", gaps inner current set $default_gaps_inner
+
+    bindsym Shift+plus  gaps inner all plus 5
+    bindsym Shift+minus gaps inner all minus 5
+    bindsym Shift+0     mode "default", gaps inner all set 0
+    bindsym Shift+d     mode "default", gaps inner all set $default_gaps_inner
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+mode "$mode_gaps_outer" {
+    bindsym plus  gaps outer current plus 5
+    bindsym minus gaps outer current minus 5
+    bindsym 0     mode "default", gaps outer current set 0
+    bindsym d     mode "default", gaps outer current set $default_gaps_outer
+
+    bindsym Shift+plus  gaps outer all plus 5
+    bindsym Shift+minus gaps outer all minus 5
+    bindsym Shift+0     mode "default", gaps outer all set 0
+    bindsym Shift+d     mode "default", gaps outer all set $default_gaps_outer
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+#############################################################
+############### I N I T #####################################
+#############################################################
+set $polybar ~/.config/polybar/launch.sh
+exec_always --no-startup-id $polybar
+
+exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id compton &
+exec_always --no-startup-id numlockx on
+exec_always --no-startup-id zsh -c 'xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1'
+exec_always --no-startup-id zsh -c 'g610-led -fx color keys ff0000 '
+exec_always --no-startup-id zsh -c 'setxkbmap -model pc105 -layout "us_intl, br" -option "grp:alt_shift_toggle"'
