@@ -15,7 +15,7 @@ destaque = #1076C5
 letras = #B3B3B3
 letras-dentro = #FFFFFF
 
-alerta = #FFD75F
+alerta = #003259
 
 laranja = #FFD75F
 azul-claro = #5FD7FF
@@ -331,7 +331,7 @@ format-discharging = <ramp-capacity>  <label-discharging>
 time-format = %H:%M
 
 label-charging = %percentage%%
-label-discharging = %percentage%% %{F#FFD75F}  %{F-} %time%h
+label-discharging = %percentage%% %{F#1076C5}  %{F-} %time%h
 
 ramp-capacity-foreground = ${colors.destaque}
 ramp-capacity-0 =  
@@ -366,7 +366,7 @@ label-close = ""
 label-close-foreground = ${colors.destaque}
 ;label-separator = " "
 label-separator =" "
-label-open-foreground = ${colors.letras-dentro}	
+label-open-foreground = ${colors.letras-dentro}
 
 menu-0-0 = "sair i3"
 menu-0-0-exec = menu-open-1
