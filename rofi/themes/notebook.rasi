@@ -10,15 +10,15 @@ configuration {
  */
 
     background-color:            rgba(25,25,25, 0.9); // FUNDO
-    selected-normal-background:  rgba(215, 255, 135, 0.5); // FUNDO_SELECIONADO
+    selected-normal-background:  rgba(16, 118, 197, 0.5); // FUNDO_SELECIONADO
     normal-background:           rgba(0,0,0,0);
     alternate-normal-background: rgba(0,0,0,0);
     transparente:                rgba(0,0,0,0);
 
 
-    fonte-em-destaque:          #FFD75F; // TEXTO_DESTAQUE
-    fonte-sem-destaque:         #B3B3B3; //TEXTO_SEM_DESTAQUE
-    cor-do-abrir:               #FFD75F;
+    fonte-em-destaque:          #FFFFFF; // TEXTO_DESTAQUE
+    fonte-sem-destaque:         #7A7A7A; //TEXTO_SEM_DESTAQUE
+    cor-do-abrir:               #1076C5;
     font:                       "Anonymous Pro Regular 12";
 
 }
