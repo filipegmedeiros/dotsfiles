@@ -3,7 +3,9 @@
 CONSTATE=$(nmcli -fields WIFI g);
 
 if [[ "$CONSTATE" =~ "enabled" ]]; then
-	echo $( iwgetid -r)
+	titulo=$( iwgetid -r)
 elif [[ "$CONSTATE" =~ "disabled" ]]; then
-	echo "Sem Internet"
+	titulo="Sem Internet"
 fi
+
+echo "$titulo"

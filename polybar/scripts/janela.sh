@@ -8,7 +8,7 @@ elif [ "$1" == "-c" ]; then
 	active_window_pid=$(xdotool getwindowpid "$active_window_id")
 	kill -9 $active_window_pid
 elif [ "$1" == "-w" ]; then
-	~/.config/rofi/scripts/janelas
+	~/.config/rofi/scripts/janelas.sh
 else
     titulo=$(xdotool getactivewindow getwindowname 2>/dev/null || echo "Window")
     echo "$titulo"

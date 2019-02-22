@@ -6,15 +6,15 @@ configuration {
 *{
     /* C O R E S */
 
-    background-color:            rgba(0,0,0, 0.6); // FUNDO
-    selected-normal-background:  rgba(16, 118, 197, 0.8); // FUNDO_SELECIONADO
+    background-color:            rgba(25,25,25, 0.9); // FUNDO
+    selected-normal-background:  rgba(16, 118, 197, 0.5); // FUNDO_SELECIONADO
     normal-background:           rgba(0,0,0,0);
     alternate-normal-background: rgba(0,0,0,0);
     transparente:                rgba(0,0,0,0);
 
 
     fonte-em-destaque:          #FFFFFF; // TEXTO_DESTAQUE
-    fonte-sem-destaque:         #8598A7; //TEXTO_SEM_DESTAQUE
+    fonte-sem-destaque:         #7A7A7A; //TEXTO_SEM_DESTAQUE
     cor-do-abrir:               #1076C5;
     font:                       "Anonymous Pro Regular 12";
 
@@ -30,6 +30,7 @@ window {
     orientation:            horizontal;
     children:	            [mainbox];
     border:                 0px -4px -4px 0px;
+    text-color:             @cinza;
     transparency:           "real";
 }
 
@@ -39,8 +40,8 @@ window {
 
 
 #inputbar {
-    background-color:       @background-color;
-    border-color:           @background-color;
+    background-color:       #191919;
+    border-color:           #191919;
     padding:                0px;
     spacing:                5px;
     border:                 8px 0px 0px 3px; 
@@ -68,7 +69,7 @@ window {
 
 #entry {
 
-    background-color:       @background-color;
+    background-color:       #191919;
     font:                   "Anonymous Pro Italic 11";
     width:                  15em;
     border-color:           @transparente;
