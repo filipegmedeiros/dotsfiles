@@ -1,0 +1,14 @@
+#!/bin/bash
+
+res=$(echo "IntelliJ;DataGrip;Git Kraken;Tillix;Telegram" | rofi -sep ";" -dmenu -p "Aplicativos Principais" -bw 0 -lines 7 -separator-style none -location 0 -width 180 -hide-scrollbar -padding 1)
+
+if [ ! -z $res ]; then
+	case $res in
+        IntelliJ) i3-msg -q "exec --no-startup-id intellij-idea-ultimate-edition" ;;
+        DataGrip) i3-msg -q "exec --no-startup-id datagrip" ;;
+        "Git Kraken") i3-msg -q "exec --no-startup-id gitkraken" ;;
+        Tillix) i3-msg -q "exec --no-startup-id tillix" ;;
+        Telegram) i3-msg -q "exec --no-startup-id telegram-desktop" ;;
+	esac
+fi
+

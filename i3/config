@@ -10,22 +10,19 @@ focus_on_window_activation focus
 #############################################################
 ############### C O L O R S #################################
 #############################################################
-set_from_resource $ba i3wm.foco		    #1076C5
-set_from_resource $bi i3wm.sem-foco     #003259
-#laranja = #FFD75F
-#azul-claro = #5FD7FF
-#azul-visudo = #AFD7FF
-#amarelo-verde = #D7FF87
-#roxo = #875FAF
-#cinza = #FFD75F
+set_from_resource $ba i3wm.foco		#004A83
+set_from_resource $bi i3wm.sem-foco	#3B4145
+set_from_resource $tx i3wm.texto	#B3B3B3
+set_from_resource $re i3wm.red		#FF0000
+
 
 # class                 border  backgr. text indicator child_border
-client.focused          $bg     $bg     $fg  $ba       $ba
-client.focused_inactive $bg     $bg     $fg  $bi       $bi
-client.unfocused        $bg     $bg     $fg  $bi       $bi
-client.urgent           $bg     $bg     $fg  $bg       $bg
-client.placeholder      $bg     $bg     $fg  $bg       $bg
-client.background       $bg
+client.focused          $ba     $ba     $tx  $ba       $ba
+client.focused_inactive $bi     $bi     $fg  $bi       $bi
+client.unfocused        $bi     $bi     $fg  $bi       $bi
+client.urgent           $re     $re     $fg  $re       $re
+client.placeholder      $bi     $bi     $fg  $bi       $bi
+client.background       $bi
 
 
 #############################################################
@@ -45,6 +42,7 @@ bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 # Rofi
 bindsym $mod+d exec --no-startup-id ~/.config/rofi/scripts/drun
 bindsym Mod1+F2 exec --no-startup-id ~/.config/rofi/scripts/run
+bindsym $mod+F1 exec --no-startup-id ~/.config/rofi/scripts/apps
 
 
 # Media Hotkeys
@@ -55,8 +53,11 @@ bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master 1+ tog
 bindsym $mod+Mod1+Left exec --no-startup-id mpc prev
 bindsym $mod+Mod1+Right exec --no-startup-id mpc next
 
-# Screenshot
-bindsym Print exec --no-startup-id $HOME/.local/bin/screenshot
+#Screenshot
+bindsym Print exec --no-startup-id $HOME/.config/rofi/scripts/screenshot.sh
+bindsym Control+Print exec --no-startup-id $HOME/.config/rofi/scripts/screenshot.sh -w
+bindsym --release $mod+Print exec --no-startup-id $HOME/.config/rofi/scripts/screenshot.sh -s
+bindsym $mod+Shift+Print exec --no-startup-id $HOME/.config/rofi/scripts/screenshot.sh -e
 
 
 bindsym $mod+j focus left
@@ -103,7 +104,7 @@ bindsym $mod+Shift+d focus child
 #############################################################
 set $workspace1 "1:"
 set $workspace2 "2:"
-set $workspace3 "3:"
+set $workspace3 "3:" 
 set $workspace4 "4:"
 set $workspace5 "5:"
 set $workspace6 "6:"
@@ -266,6 +267,4 @@ exec_always --no-startup-id $polybar
 exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id compton &
 exec_always --no-startup-id numlockx on
-exec_always --no-startup-id zsh -c 'xinput set-prop "ETPS/2 Elantech Touchpad" "libinput Tapping Enabled" 1'
-exec_always --no-startup-id zsh -c 'g610-led -fx color keys ff0000 '
-exec_always --no-startup-id zsh -c 'setxkbmap -model pc105 -layout "us_intl, br" -option "grp:alt_shift_toggle"'
+exec_always --no-startup-id setxkbmap -layout us -variant intl
